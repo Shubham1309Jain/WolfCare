@@ -6,57 +6,6 @@
 
 <h2 align="center"> Online Doctor Appointment and Symptoms Checker </h2>
 
-<div align="center">
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/actions/workflows/backendGitActions.yml">
-    <img src="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/actions/workflows/backendGitActions.yml/badge.svg">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/actions/workflows/frontendGitActions.yml">
-    <img src="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/actions/workflows/frontendGitActions.yml/badge.svg">
-  </a>
-  <a href="https://codecov.io/gh/agupta15k/ncsu_se_fall22_22_pr_2" > 
-    <img src="https://codecov.io/gh/agupta15k/ncsu_se_fall22_22_pr_2/branch/main/graph/badge.svg?token=2EK80CFDBA"/> 
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2.git">
-    <img src="https://img.shields.io/github/repo-size/agupta15k/ncsu_se_fall22_22_pr_2?color=brightgreen">
-  </a>
-  <a href="https://zenodo.org/badge/latestdoi/569499359">
-    <img src="https://zenodo.org/badge/569499359.svg" alt="DOI">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/divyagiridhar/SE-Group-25-WolfCare">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/agupta15k/ncsu_se_fall22_22_pr_2">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/graphs/commit-activity">
-    <img src="https://img.shields.io/github/commit-activity/w/agupta15k/ncsu_se_fall22_22_pr_2?color=blueviolet">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/issues">
-    <img src="https://img.shields.io/github/issues-raw/agupta15k/ncsu_se_fall22_22_pr_2?color=red">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/issues?q=is%3Aissue+is%3Aclosed">
-    <img src="https://img.shields.io/github/issues-closed-raw/agupta15k/ncsu_se_fall22_22_pr_2?color=success">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/pulls">
-    <img src="https://img.shields.io/github/issues-pr/agupta15k/ncsu_se_fall22_22_pr_2?color=orange">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/pulls?q=is%3Apr+is%3Aclosed">
-    <img src="https://img.shields.io/github/issues-pr-closed/agupta15k/ncsu_se_fall22_22_pr_2?color=green">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/tags">
-    <img src="https://img.shields.io/github/v/tag/agupta15k/ncsu_se_fall22_22_pr_2?color=9cf">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2">
-    <img src="https://img.shields.io/github/languages/count/agupta15k/ncsu_se_fall22_22_pr_2">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2">
-    <img src="https://img.shields.io/github/languages/top/agupta15k/ncsu_se_fall22_22_pr_2?color=ff69b4">
-  </a>
-  <a href="https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/network/members">
-    <img src="https://img.shields.io/github/forks/agupta15k/ncsu_se_fall22_22_pr_2?style=social">
-  </a>
-</div>
-
 <h2> Table of Contents </h2>
 
 <li> 
