@@ -112,7 +112,7 @@ https://user-images.githubusercontent.com/112216701/205819674-413de60f-b322-4470
 
 <h2 id = "appInAction"> App in Action </h2>
 
-Execution screenshots can be found [here](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/tree/main/docs/execution/screenshots)
+Execution screenshots can be found [here](https://github.com/Shubham1309Jain/WolfCare/tree/main/docs/execution/screenshots)
 
 <h2 id = "target audience"> Target Audience </h2>
 
@@ -124,7 +124,7 @@ WolfCare targets uses who would like to check the presence of any medical condit
 
 <h2 id = "ig"> Getting started </h2>
 
->***Note***: *All the requirements of the project are listed in the [requirements.txt](https://github.com/divyagiridhar/SE-Group-25-WolfCare/blob/main/requirements.txt) file with their required versions. The [INSTALL.md](https://github.com/divyagiridhar/SE-Group-25-WolfCare/blob/main/INSTALL.md) guides on how to download the required applications.*
+>***Note***: *All the requirements of the project are listed in the [requirements.txt](https://github.com/Shubham1309Jain/WolfCare/blob/main/requirements.txt) file with their required versions. The [INSTALL.md](https://github.com/Shubham1309Jain/WolfCare/blob/main/INSTALL.md) guides on how to download the required applications.*
 
 - ### Prerequisites
   - [npm](https://www.npmjs.com/) and [node](https://nodejs.org/en/) (version 16.X or 16.17.1) should be installed.
@@ -143,7 +143,7 @@ WolfCare targets uses who would like to check the presence of any medical condit
 
 - ### Installation and Run
 
-    **Backend**: [Documentation](https://htmlpreview.github.io/?https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/blob/backendDocs/index.html)
+    **Backend**: [Documentation](https://github.com/Shubham1309Jain/WolfCare/blob/main/docs/backend/index.html)
 
     1. Create virtual environment
 
@@ -174,7 +174,7 @@ WolfCare targets uses who would like to check the presence of any medical condit
 
     6. The backend flask application will be up and running at ```localhost:5001```
 
-    **Frontend**: [Documentation](https://htmlpreview.github.io/?https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/blob/frontendDocs/wolfcare/0.1.0/index.html)
+    **Frontend**: [Documentation](https://github.com/Shubham1309Jain/WolfCare/blob/main/docs/frontendDocs/wolfcare/0.1.0/index.html)
 
     1. After cloning the repository, move to the directory ```src\frontend``` where our frontend code is located.
 
