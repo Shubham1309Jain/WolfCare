@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/appointmentsList.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/appointmentsList.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Button, Space, Popconfirm, Table } from 'antd';
+import DescribeAppointment from './appointmentDescribe';
+
+/**
+ * React component for listing all appointments
+ * @extends React.Component
+ */
+class AppointmentsList extends React.Component {
+	/**
+	 * Set initial state
+	 * @param {Object} props Props for the component
+	 */
+	constructor (props) {
+		super(props);
+		this.state = {
+			loading: false,
+			showAppointmentDescription: false,
+			selectedAppointment: {},
+			userAppointments: props.parentProps.userAppointments,
+			doctorAppointments: props.parentProps.doctorAppointments
+		};
+	}
+
+	/**
+	 * React lifecycle method to load all available doctors
+	 */
+	componentDidMount() {
+		this.handleSubmit();
+	}
+
+	/**
+	 * Get appointments for both user and doctors depending on user type, save appointments in state
+	 * @returns {Boolean} True if everything succeeds, false otherwise
+	 */
+	handleSubmit = async () => {
+		if (Object.keys(this.props.parentProps).length > 0) {
+			this.setState({
+				loading: true
+			});
+			if (Object.keys(this.props.parentProps.userInfo.doctor).length > 0) {
+				await this.props.parentProps.onGetAppointmentsForDoctor(this.props.parentProps.userInfo.doctor.doctorid);
+				if (this.props.parentProps.getAppointmentsForDoctorStatus) {
+					let doctorAppointments = this.props.parentProps.doctorAppointments.map((app) => {
+						return ({
+							...app,
+							doctorName: 'Dr. ' + app.firstname + ' ' + app.lastname,
+							appointStatus: &lt;Button disabled shape='round' size='small' style={ { height: '40px', color: 'white', backgroundColor: app.isactive === 'TRUE' ? 'green' : 'red', float: 'right', marginRight: app.isactive === 'TRUE' ? '39%' : '32%' } }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>{ app.isactive === 'TRUE' ? 'Active' : 'Cancelled' }&lt;/p>&lt;/Button>
+						});
+					});
+					this.setState({
+						loading: false,
+						doctorAppointments
+					});
+					return true;
+				} else {
+					this.setState({
+						loading: false
+					});
+					alert(this.props.parentProps.getAppointmentsForDoctorMessage || 'Could not get list of appointments, please try again.');
+					return false;
+				}
+			} else {
+				await this.props.parentProps.onGetAppointmentsForUser(this.props.parentProps.userInfo.user.userid);
+				if (this.props.parentProps.getAppointmentsForUserStatus) {
+					let userAppointments = this.props.parentProps.userAppointments.map((app) => {
+						return ({
+							...app,
+							doctorName: 'Dr. ' + app.firstname + ' ' + app.lastname,
+							appointStatus: &lt;Button disabled shape='round' size='small' style={ { height: '40px', color: 'white', backgroundColor: app.isactive === 'TRUE' ? 'green' : 'red', float: 'right', marginRight: app.isactive === 'TRUE' ? '39%' : '32%' } }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>{ app.isactive === 'TRUE' ? 'Active' : 'Cancelled' }&lt;/p>&lt;/Button>
+						});
+					});
+					this.setState({
+						loading: false,
+						userAppointments
+					});
+					return true;
+				} else {
+					this.setState({
+						loading: false
+					});
+					alert(this.props.parentProps.getAppointmentsForUserMessage || 'Could not get list of appointments, please try again.');
+					return false;
+				}
+			}
+		}
+	};
+
+	/**
+	 * Delete appointment
+	 * @param {Object} record Selected appointment
+	 * @returns {Boolean} True if everything succeeds, false otherwise
+	 */
+	confirmDeletion = async (record) => {
+		// Delete appointment
+		if (Object.keys(this.props).length > 0 &amp;&amp; Object.keys(this.props.parentProps).length > 0) {
+			const apiInput = {
+				...record,
+				isactive: 'FALSE'
+			};
+			this.setState({
+				loading: true
+			});
+			await this.props.parentProps.onAppointmentDelete(apiInput);
+			if (this.props.parentProps.deleteAppointmentApiStatus) {
+				this.setState({
+					loading: false
+				});
+				location.reload();
+				return true;
+			} else {
+				this.setState({
+					loading: false
+				});
+				alert(this.props.parentProps.deleteAppointmentApiMessage || 'Appointment deletion failed. Please try again.');
+				return false;
+			}
+		}
+		return false;
+	};
+
+	/**
+	 * Set state to show describe appointment model
+	 * @param {Boolean} val True/False to view or not view modal
+	 */
+	setAppointmentDescriptionStatus = (val) => {
+		this.setState({
+			showAppointmentDescription: val
+		});
+	};
+
+	/**
+	 * Set currently selected appointment in state
+	 * @param {Boolean} val Selected appointment
+	 */
+	setSelectedAppointment = (val) => {
+		this.setState({
+			selectedAppointment: val
+		});
+	};
+
+	/**
+	 * Render appointment list component
+	 * @returns {React.Component} Form with register user related HTML tags
+	 */
+	render() {
+		const { Column } = Table;
+		if (!this.props.userLogonDetails || !this.props.userLogonDetails.signInStatus) {
+			return (
+				&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '40%', top: '25%', right: '25%', opacity: '90%' } }>
+					&lt;div>
+						&lt;h1 style={ { width: '100%', marginTop: '15%', marginRight: '5%', textAlign: 'center' } }>Uh oh! Something went wrong&lt;/h1>
+						&lt;h2 style={ { width: '100%', marginTop: '5%', marginRight: '5%', textAlign: 'center' } }>&lt;b>Please login to see appointments&lt;/b>&lt;/h2>
+						&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '5%', marginLeft: '45%' } } onClick={ () => this.props.setLoginClicked(true) }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Login&lt;/p>&lt;/Button>
+					&lt;/div>
+				&lt;/div>
+			);
+		}
+		return (
+			&lt;section style={ { margin: '2% 2% 2% 2%' } }>
+				{ this.state.showAppointmentDescription ? &lt;DescribeAppointment setAppointmentDescriptionStatus={ this.setAppointmentDescriptionStatus } selectedAppointment={ this.state.selectedAppointment } parentProps={ this.props.parentProps } /> : null }
+				&lt;h2 style={ { float: 'left' } }>Appointments&lt;/h2>
+				&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginBottom: '2%', marginRight: '5%', float: 'right' } } onClick={ () => this.props.redirectToPath('/home/doctors') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Book a new appointment&lt;/p>&lt;/Button>
+				&lt;Table
+					dataSource={ Object.keys(this.props.parentProps.userInfo.doctor).length > 0 ? this.state.doctorAppointments : this.state.userAppointments }
+					bordered={ true }
+					showHeader
+					scroll={ {
+						y: 435
+					} }
+					pagination={ {
+						position: [ 'bottomCenter' ],
+						showQuickJumper: true
+					} }
+					loading={ this.state.loading }
+				>
+					&lt;Column title='Appointment Date' dataIndex='date' key='date' />
+					&lt;Column title='Appointment Time' dataIndex='timeslot' key='timeslot' />
+					&lt;Column title='Doctor' dataIndex='doctorName' key='doctorName' />
+					&lt;Column title='Hospital' dataIndex='name' key='name' />
+					&lt;Column title='Appointment Status' dataIndex='appointStatus' key='appointStatus' />
+					&lt;Column
+						title='Action'
+						key='action'
+						render={ (_, record) => {
+							return (&lt;Space size='middle'>
+								&lt;a className='link' onClick={ () => {
+									if (record.isactive === 'TRUE') {
+										this.setSelectedAppointment(record);
+										this.setAppointmentDescriptionStatus(true);
+									} else {
+										alert('Appointment not active');
+										return false;
+									}
+								} }>Edit&lt;/a>
+								&lt;Popconfirm
+									title='Are you sure to cancel this appointment?'
+									onConfirm={ () => this.confirmDeletion(record) }
+									okText='Yes'
+									cancelText='No'
+									disabled={ record.isactive !== 'TRUE' }
+								>
+									&lt;a className='link' onClick={ () => {
+										if (record.isactive !== 'TRUE') {
+											alert('Appointment not active');
+											return false;
+										}
+									} }>Cancel&lt;/a>
+								&lt;/Popconfirm>
+							&lt;/Space>);
+						} }
+					/>
+				&lt;/Table>
+			&lt;/section>
+		);
+	}
+}
+
+export default AppointmentsList;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-axiosClient.html">axiosClient</a></li><li><a href="module-combineReducers.html">combineReducers</a></li><li><a href="module-deleteAppointmentApi.html">deleteAppointmentApi</a></li><li><a href="module-getAppointmentsForDoctor.html">getAppointmentsForDoctor</a></li><li><a href="module-getAppointmentsForUser.html">getAppointmentsForUser</a></li><li><a href="module-getDoctorAffiliatedHospitalsApi.html">getDoctorAffiliatedHospitalsApi</a></li><li><a href="module-getDoctorRequests.html">getDoctorRequests</a></li><li><a href="module-getDoctorsApi.html">getDoctorsApi</a></li><li><a href="module-getHospitalRequests.html">getHospitalRequests</a></li><li><a href="module-getHospitalsApi.html">getHospitalsApi</a></li><li><a href="module-getProfleAPI.html">getProfleAPI</a></li><li><a href="module-homeContainer.html">homeContainer</a></li><li><a href="module-homeReducer.html">homeReducer</a></li><li><a href="module-loginApi.html">loginApi</a></li><li><a href="module-registerUserApi.html">registerUserApi</a></li><li><a href="module-reviewDoctorRequests.html">reviewDoctorRequests</a></li><li><a href="module-reviewHospitalRequests.html">reviewHospitalRequests</a></li><li><a href="module-scheduleAppointmentApi.html">scheduleAppointmentApi</a></li><li><a href="module-updateAppointmentApi.html">updateAppointmentApi</a></li><li><a href="module-updateProfileAPI.html">updateProfileAPI</a></li></ul><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AdminRequests.html">AdminRequests</a></li><li><a href="AppointmentsList.html">AppointmentsList</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="DescribeAppointment.html">DescribeAppointment</a></li><li><a href="DoctorsList.html">DoctorsList</a></li><li><a href="Home.html">Home</a></li><li><a href="HospitalsList.html">HospitalsList</a></li><li><a href="LoginUser.html">LoginUser</a></li><li><a href="MainPage.html">MainPage</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="RegisterUser.html">RegisterUser</a></li><li><a href="SymptomsChecker.html">SymptomsChecker</a></li><li><a href="Wolfcare.html">Wolfcare</a></li></ul><h3>Global</h3><ul><li><a href="global.html#filterDropdown">filterDropdown</a></li><li><a href="global.html#filterIcon">filterIcon</a></li><li><a href="global.html#onFilter">onFilter</a></li><li><a href="global.html#onFilterDropdownOpenChange">onFilterDropdownOpenChange</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Dec 05 2022 20:02:27 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

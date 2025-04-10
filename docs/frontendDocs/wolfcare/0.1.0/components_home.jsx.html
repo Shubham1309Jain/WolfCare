@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/home.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/home.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Avatar, Button, Dropdown, Layout, Menu, Modal } from 'antd';
+import {
+	CalendarOutlined,
+	CheckCircleOutlined,
+	HomeOutlined,
+	InfoCircleOutlined,
+	MedicineBoxOutlined,
+	PlusSquareOutlined,
+	PhoneOutlined,
+	UserOutlined
+} from '@ant-design/icons';
+import LoginUser from './login';
+import RegisterUser from './register';
+import MainPage from './main';
+import DoctorsList from './doctorsList';
+import HospitalsList from './hospitalsList';
+import AppointmentsList from './appointmentsList';
+import SymptomsChecker from './symptomsChecker';
+import AboutUs from './about';
+import ContactUs from './contact';
+import AdminRequests from './adminRequests';
+
+
+/**
+ * React component for Home
+ * @extends React.Component
+ */
+class Home extends React.Component {
+	/**
+	 * Set initial state
+	 * @param {Object} props Props for the component
+	 */
+	constructor (props) {
+		super(props);
+		this.state = {
+			tab: '',
+			userLogonDetails: {},
+			isLoginClicked: false,
+			isRegisterClicked: false,
+			userType: props.userType || 'patient',
+			isProfileViewClicked: false
+		};
+	}
+
+	/**
+	 * React lifecycle method to route to correct tab on the home page
+	 */
+	componentDidMount() {
+		const userLogonDetails = JSON.parse(localStorage.getItem('userLogonDetails'));
+		this.setState({
+			userLogonDetails: userLogonDetails || {},
+		});
+		if (this.state.userLogonDetails.userType) {
+			this.setState({ userType: this.state.userLogonDetails.userType });
+		}
+		const url = new URL(document.location.href);
+		const pathWithoutHome = url.pathname.split('/')[ 2 ];
+		if (url.pathname === '/') {
+			this.redirectToPath('/home');
+		} else if (url.pathname === '/home') {
+			this.setState({
+				tab: 'home'
+			});
+		} else {
+			const paths = [ 'doctors', 'hospitals', 'appointments', 'symptoms', 'about', 'contact', 'requests' ];
+			if (paths.includes(pathWithoutHome)) {
+				this.setState({
+					tab: pathWithoutHome
+				});
+			}
+		}
+	}
+
+	/**
+	 * Redirect to specified path
+	 * @param {String} path Path to redirect
+	 */
+	redirectToPath = (value) => {
+		const url = new URL(document.location.href);
+		document.location.href = `${url.origin}${value}`;
+	};
+
+	/**
+	 * Set state to show login model
+	 * @param {Boolean} val True/False to view or not view modal
+	 */
+	setLoginClicked = (val) => {
+		const userLogonDetails = JSON.parse(localStorage.getItem('userLogonDetails'));
+		this.setState({
+			userLogonDetails: userLogonDetails || {},
+			isLoginClicked: val
+		});
+	};
+
+	/**
+	 * Set state to show register model
+	 * @param {Boolean} val True/False to view or not view modal
+	 */
+	setRegisterClicked = (val, userType) => {
+		const userLogonDetails = JSON.parse(localStorage.getItem('userLogonDetails'));
+		this.setState({
+			userLogonDetails: userLogonDetails || {},
+			userType: userType || 'patient',
+			isRegisterClicked: val,
+		});
+	};
+
+	/**
+	 * Get user type from state
+	 * @returns {String} User type
+	 */
+	getUserType = () => {
+		return this.props.userType || this.state.userType;
+	};
+
+	/**
+	 * Set user type to state
+	 * @param {String} val User type
+	 */
+	setUserType = (val) => {
+		this.setState({
+			userType: val
+		});
+	};
+
+	/**
+	 * Set state to show profile model
+	 * @param {Boolean} val True/False to view or not view modal
+	 */
+	setProfileView = (val) => {
+		this.setState({
+			isProfileViewClicked: val
+		});
+	};
+
+	/**
+	 * Render respective component when its tab is selected
+	 * @returns {Object} React component
+	 */
+	renderContent = () => {
+		switch (this.state.tab) {
+			case 'home':
+				return &lt;MainPage redirectToPath={ this.redirectToPath } setRegisterClicked={ this.setRegisterClicked } userType={ this.state.userType } />;
+			case 'doctors':
+				return &lt;DoctorsList userLogonDetails={ this.state.userLogonDetails } setLoginClicked={ this.setLoginClicked } redirectToPath={ this.redirectToPath } parentProps={ this.props } />;
+			case 'hospitals':
+				return &lt;HospitalsList parentProps={ this.props } />;
+			case 'appointments':
+				return &lt;AppointmentsList userLogonDetails={ this.state.userLogonDetails } setLoginClicked={ this.setLoginClicked } redirectToPath={ this.redirectToPath } parentProps={ this.props } />;
+			case 'symptoms':
+				return &lt;SymptomsChecker />;
+			case 'about':
+				return &lt;AboutUs redirectToPath={ this.redirectToPath } setRegisterClicked={ this.setRegisterClicked } />;
+			case 'contact':
+				return &lt;ContactUs />;
+			case 'requests':
+				return &lt;AdminRequests userLogonDetails={ this.state.userLogonDetails } parentProps={ this.props } />;
+			default:
+				return &lt;MainPage redirectToPath={ this.redirectToPath } setRegisterClicked={ this.setRegisterClicked } userType={ this.state.userType } />;
+		}
+	};
+
+	/**
+	 * Render home page component
+	 * @returns {React.Component} Form with login related HTML tags
+	 */
+	render() {
+		const { Header, Content, Footer } = Layout;
+		let items = [
+			{
+				key: 'home',
+				icon: &lt;HomeOutlined />,
+				label: 'Home',
+				onClick: () => this.redirectToPath('/home')
+			},
+			{
+				key: 'appointments',
+				icon: &lt;CalendarOutlined />,
+				label: 'Appointments',
+				onClick: () => this.redirectToPath('/home/appointments')
+			},
+			{
+				key: 'doctors',
+				icon: &lt;MedicineBoxOutlined />,
+				label: 'Doctors',
+				onClick: () => this.redirectToPath('/home/doctors')
+			},
+			{
+				key: 'hospitals',
+				icon: &lt;PlusSquareOutlined />,
+				label: 'Hospitals',
+				onClick: () => this.redirectToPath('/home/hospitals')
+			},
+			{
+				key: 'symptoms',
+				icon: &lt;CheckCircleOutlined />,
+				label: 'Symptom checker',
+				onClick: () => this.redirectToPath('/home/symptoms')
+			}
+		];
+		if (this.state.userType !== 'admin' || !this.state.userLogonDetails.signInStatus) {
+			items = [ ...items, {
+				key: 'about',
+				icon: &lt;InfoCircleOutlined />,
+				label: 'About us',
+				onClick: () => this.redirectToPath('/home/about')
+			},
+			{
+				key: 'contact',
+				icon: &lt;PhoneOutlined />,
+				label: 'Contact us',
+				onClick: () => this.redirectToPath('/home/contact')
+			} ];
+		} else {
+			items = [ ...items, {
+				key: 'requests',
+				icon: &lt;InfoCircleOutlined />,
+				label: 'Requests',
+				onClick: () => this.redirectToPath('/home/requests')
+			} ];
+		}
+		return (
+			&lt;section>
+				&lt;Modal
+					title={ &lt;h2>Sign in&lt;/h2> }
+					open={ this.state.isLoginClicked }
+					onOk={ () => this.setLoginClicked(false) }
+					onCancel={ () => this.setLoginClicked(false) }
+					width={ 800 }
+					height={ 700 }
+					footer={ null }
+				>
+					&lt;LoginUser setLoginClicked={ this.setLoginClicked } parentProps={ this.props } />
+				&lt;/Modal>
+				&lt;Modal
+					title={ &lt;h2>Sign up&lt;/h2> }
+					open={ this.state.isRegisterClicked }
+					onOk={ () => this.setRegisterClicked(false, 'patient') }
+					onCancel={ () => this.setRegisterClicked(false, 'patient') }
+					width={ 800 }
+					height={ 700 }
+					style={ { top: 20 } }
+					footer={ null }
+				>
+					&lt;RegisterUser setRegisterClicked={ this.setRegisterClicked } getUserType={ this.getUserType } setUserType={ this.setUserType } clearUserType={ this.clearUserType } parentProps={ this.props } />
+				&lt;/Modal>
+				&lt;Modal
+					title={ &lt;h2>Profile&lt;/h2> }
+					open={ this.state.isProfileViewClicked }
+					onOk={ () => this.setProfileView(false) }
+					onCancel={ () => this.setProfileView(false) }
+					width={ 800 }
+					height={ 700 }
+					footer={ null }
+				>
+					&lt;RegisterUser setRegisterClicked={ this.setRegisterClicked } getUserType={ this.getUserType } setUserType={ this.setUserType } clearUserType={ this.clearUserType } parentProps={ this.props } isUpdate={ true } />
+				&lt;/Modal>
+				&lt;Layout className='layout'>
+					&lt;Header style={ { backgroundColor: '#DFDFDF', height: '5.5em' } }>
+						&lt;a href='/home' style={ { float: 'left' } }>
+							&lt;img style={ { height: '70px', width: '70px', position: 'relative', float: 'left', marginTop: '0.5em' } } src='../wolf.png' alt='wolf'>&lt;/img>
+							&lt;b style={ { color: 'black', marginLeft: '0.5em', float: 'left', fontSize: '25px' } }>WOLF&lt;/b>&lt;b style={ { color: 'red', float: 'left', fontSize: '25px' } }>CARE&lt;/b>
+							&lt;br>&lt;/br>
+							&lt;p style={ { color: 'black', float: 'left', fontSize: '15px', marginLeft: '1em', marginTop: '-2.5em' } }>Your pocket doctor&lt;/p>
+						&lt;/a>
+						{
+							this.props.userId &amp;&amp; this.state.userLogonDetails.signInStatus ? &lt;div
+								style={ { float: 'right' } }>
+								&lt;Dropdown
+									placement='bottom'
+									menu={ {
+										items: [
+											{
+												key: 'profile',
+												label: (
+													&lt;a rel='noopener noreferrer' onClick={ () => {
+														this.setProfileView(true);
+													} }>
+														Profile
+													&lt;/a>
+												)
+											},
+											{
+												key: 'appointmentHistory',
+												label: (
+													&lt;a rel='noopener noreferrer' href='/home/appointments'>
+														Appointment History
+													&lt;/a>
+												)
+											},
+											{
+												key: 'signout',
+												label: (
+													&lt;a rel='noopener noreferrer' onClick={ () => {
+														let userLogonDetails = this.state.userLogonDetails;
+														userLogonDetails.signInStatus = false;
+														userLogonDetails.userId = null;
+														userLogonDetails.userType = '';
+														userLogonDetails.userInfo = {};
+														localStorage.setItem('userLogonDetails', JSON.stringify(userLogonDetails));
+														this.props.onSubmitSignOut();
+														this.redirectToPath('/home');
+													} }>
+														Sign Out
+													&lt;/a>
+												)
+											}
+										]
+									} }
+								>
+									&lt;Avatar style={ { backgroundColor: '#87d068', marginTop: '20px' } } size={ 50 } icon={ &lt;UserOutlined /> } />
+								&lt;/Dropdown>
+							&lt;/div> : &lt;div
+								style={ { float: 'right' } }>
+								&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', float: 'left', marginRight: '1em', marginTop: '1.5em' } } onClick={ () => this.setLoginClicked(true) }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Login&lt;/p>&lt;/Button>
+								&lt;Button shape='round' size='small' style={ { height: '40px', position: 'relative', float: 'left', marginTop: '1.5em' } }>&lt;p style={ { float: 'left', marginTop: '0.5em' } } onClick={ () => this.setRegisterClicked(true) }>Join Now&lt;/p>&lt;/Button>
+							&lt;/div>
+						}
+						&lt;Menu
+							style={ { backgroundColor: '#DFDFDF', float: 'right', marginRight: '3em', marginTop: '0.5em' } }
+							mode='horizontal'
+							items={ items }
+							disabledOverflow={ true }
+							selectedKeys={ [ this.state.tab || 'home' ] }
+						/>
+					&lt;/Header>
+					&lt;Content style={ { height: '650px' } }>
+						{ this.renderContent() }
+					&lt;/Content>
+					&lt;Footer style={ { paddingTop: '1em', width: '100%', height: '10px', backgroundColor: '#DFDFDF', bottom: '0.5%', position: 'absolute' } }>Copyright (c) 2022 Group 22&lt;/Footer>
+				&lt;/Layout>
+			&lt;/section>
+		);
+	}
+}
+
+export default Home;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-axiosClient.html">axiosClient</a></li><li><a href="module-combineReducers.html">combineReducers</a></li><li><a href="module-deleteAppointmentApi.html">deleteAppointmentApi</a></li><li><a href="module-getAppointmentsForDoctor.html">getAppointmentsForDoctor</a></li><li><a href="module-getAppointmentsForUser.html">getAppointmentsForUser</a></li><li><a href="module-getDoctorAffiliatedHospitalsApi.html">getDoctorAffiliatedHospitalsApi</a></li><li><a href="module-getDoctorRequests.html">getDoctorRequests</a></li><li><a href="module-getDoctorsApi.html">getDoctorsApi</a></li><li><a href="module-getHospitalRequests.html">getHospitalRequests</a></li><li><a href="module-getHospitalsApi.html">getHospitalsApi</a></li><li><a href="module-getProfleAPI.html">getProfleAPI</a></li><li><a href="module-homeContainer.html">homeContainer</a></li><li><a href="module-homeReducer.html">homeReducer</a></li><li><a href="module-loginApi.html">loginApi</a></li><li><a href="module-registerUserApi.html">registerUserApi</a></li><li><a href="module-reviewDoctorRequests.html">reviewDoctorRequests</a></li><li><a href="module-reviewHospitalRequests.html">reviewHospitalRequests</a></li><li><a href="module-scheduleAppointmentApi.html">scheduleAppointmentApi</a></li><li><a href="module-updateAppointmentApi.html">updateAppointmentApi</a></li><li><a href="module-updateProfileAPI.html">updateProfileAPI</a></li></ul><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AdminRequests.html">AdminRequests</a></li><li><a href="AppointmentsList.html">AppointmentsList</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="DescribeAppointment.html">DescribeAppointment</a></li><li><a href="DoctorsList.html">DoctorsList</a></li><li><a href="Home.html">Home</a></li><li><a href="HospitalsList.html">HospitalsList</a></li><li><a href="LoginUser.html">LoginUser</a></li><li><a href="MainPage.html">MainPage</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="RegisterUser.html">RegisterUser</a></li><li><a href="SymptomsChecker.html">SymptomsChecker</a></li><li><a href="Wolfcare.html">Wolfcare</a></li></ul><h3>Global</h3><ul><li><a href="global.html#filterDropdown">filterDropdown</a></li><li><a href="global.html#filterIcon">filterIcon</a></li><li><a href="global.html#onFilter">onFilter</a></li><li><a href="global.html#onFilterDropdownOpenChange">onFilterDropdownOpenChange</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Dec 05 2022 20:02:27 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

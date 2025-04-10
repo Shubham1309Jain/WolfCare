@@ -1,0 +1,3415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>backend.utils API documentation</title>
+<meta name="description" content="This file holds the entire database related configuration and fucntions" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>backend.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>This file holds the entire database related configuration and fucntions</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This file holds the entire database related configuration and fucntions
+&#34;&#34;&#34;
+import mysql.connector
+from src.backend.dbconfig import constants
+import datetime
+
+def db_connection():
+    try:
+        connection = mysql.connector.connect(
+            host=constants[&#34;host&#34;], user=constants[&#34;user&#34;], password=constants[&#34;password&#34;], database=constants[&#34;database&#34;])
+    # except:
+        return connection
+        
+    except mysql.connector.Error as err:
+        if err.errno == mysql.connector.errorcode.ER_ACCESS_DENIED_ERROR:
+            print(&#34;Something is wrong with your user name or password&#34;)
+        elif err.errno == mysql.connector.errorcode.ER_BAD_DV_ERROR:
+            print(&#34;Database does not exist&#34;)
+        else:
+            print(err)
+
+
+
+
+def addDoctor(lastname, primaryspecialty, phone, email, yoe, userid, firstname=&#34;Dr.&#34;, secondaryspecialty=&#34; &#34;, type=&#34; &#34;, degree=&#34; &#34;, gender=&#34; &#34;):
+    &#34;&#34;&#34;
+    Inserts doctor info into the database.
+    Parameters
+    ----------
+    firstname : string
+        First name of the doctor.
+    lastname : string
+        Last name of the doctor.
+    primaryspecialty : string
+        Primary specialty of the doctor. For eg. Dermatology, Neurology etc.
+    secondaryspecialty : string
+        Secondary specialty of the doctor, other than primaryspecialty. This can be NULL. For eg. Dermatology, Neurology etc.
+    type : string
+        Type of the doctor. For eg. Prescriber, Non Prescriber.
+    degree : int
+        Degree owned by the doctor. For eg. MBBS, MD etc.
+    phone : string
+        Contact number of the doctor.
+    email : string
+        Email id of the doctor.
+    gender : string
+        Gender of the doctor. For eg. Male, Female etc.
+    yoe : string
+        Years of experience of the doctor.
+    userid : int
+        ID of the doctor (Doctor also an user)
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        approvalstatus = &#34;FALSE&#34;
+        cursor = connection.cursor(dictionary=True)
+        mysql_insert_query = &#34;&#34;&#34;INSERT INTO doctors (firstname, lastname, primaryspecialty, secondaryspecialty, type, degree, phone, email, gender, yoe, approvalstatus, isactive, lastmoddate, userid)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) &#34;&#34;&#34;
+
+        record = (firstname, lastname, primaryspecialty, secondaryspecialty, type, degree,
+                  phone, email, gender, yoe, approvalstatus, isactive, lastmoddate, int(userid))
+        cursor.execute(mysql_insert_query, record)
+        connection.commit()
+        print(&#34;Record inserted successfully into doctors table&#34;)
+        msg = &#34;Record inserted successfully into doctors table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to insert into doctors table {}&#34;.format(error))
+        msg = &#34;Failed to insert into doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in addDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to insert into doctors table {}&#34;.format(e)
+        return False, msg
+
+
+def updateDoctorInfo(data):
+    &#34;&#34;&#34;
+    Updates doctor information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Doctor information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+        mysql_update_query = &#34;&#34;&#34;UPDATE doctors set firstname = %s, lastname = %s, primaryspecialty = %s, secondaryspecialty = %s, type = %s, degree = %s, phone = %s, email = %s, gender = %s, yoe = %s, approvalstatus = %s, isactive = %s, lastmoddate = %s WHERE doctorid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;firstname&#39;]), str(data[&#39;lastname&#39;]), str(data[&#39;primaryspecialty&#39;]), str(data[&#39;secondaryspecialty&#39;]), str(data[&#39;type&#39;]), str(data[&#39;degree&#39;]), str(
+            data[&#39;phone&#39;]), str(data[&#39;email&#39;]), str(data[&#39;gender&#39;]), str(data[&#39;yoe&#39;]), str(data[&#39;approvalstatus&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;doctorid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into doctors table&#34;)
+        msg = &#34;Record updated successfully into doctors table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateDoctorInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def getDoctorDetailsByUserID(userid):
+    &#34;&#34;&#34;
+    Get details of the doctor with the given userid.
+    Parameters
+    ----------
+    userid : int
+        ID of the doctor as user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.approvalstatus, doc.isactive, doc.lastmoddate, doc.userid FROM doctors doc WHERE doc.userid = %s&#39;, (int(userid),))
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;], &#34;userid&#34;: record[&#34;userid&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorDetailsByUserID: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getDoctorDetails(doctorid):
+    &#34;&#34;&#34;
+    Get details of the doctor with the given doctorid.
+    Parameters
+    ----------
+    doctorid : int
+        ID of the doctor.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.approvalstatus, doc.isactive, doc.lastmoddate, doc.userid FROM doctors doc WHERE doc.doctorid = %s&#39;, (int(doctorid),))
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;], &#34;userid&#34;: record[&#34;userid&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorInfo: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getDoctors():
+    &#34;&#34;&#34;
+    Get details of all the doctor.
+    Parameters
+    ----------
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.isactive FROM doctors doc WHERE doc.isactive = &#34;TRUE&#34; and doc.approvalstatus = &#34;TRUE&#34;&#39;)
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;name&#34;: record[&#34;firstname&#34;] + record[&#34;lastname&#34;], &#34;specialization&#34;: record[&#34;primaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;experience&#34;: record[&#34;yoe&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorList: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def addHospital(name, addressline1, phone, email, city=&#34; &#34;, state=&#34; &#34;, country=&#34; &#34;, zipcode=&#34; &#34;, type=&#34;HOSPITAL&#34;, addressline2=&#34; &#34;):
+    &#34;&#34;&#34;
+    Inserts doctor info into the database.
+    Parameters
+    ----------
+    name : string
+        Name of the hospital
+    type : string
+        Type of hospital
+    addressline1 : string
+        address of hospital
+    addressline2 : string
+        address of hospital
+    city : string
+        City of the hospital
+    state : string
+        State of the hospital
+    country : string
+        State of the hospital
+    zipcode : string
+        Zip code of the hospital
+    phone : string
+        Contact number of the hospital.
+    email : string
+        Email id of the hospital.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        approvalstatus = &#34;FALSE&#34;
+        cursor = connection.cursor(dictionary=True)
+        mysql_insert_query = &#34;&#34;&#34;INSERT INTO hospitals (name, type, addressline1, addressline2, city, state, country, zipcode, phone, email, approvalstatus, isactive, lastmoddate)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) &#34;&#34;&#34;
+
+        record = (name, type, addressline1, addressline2, city, state, country,
+                  zipcode, phone, email, approvalstatus, isactive, lastmoddate)
+        cursor.execute(mysql_insert_query, record)
+        connection.commit()
+        print(&#34;Record inserted successfully into hospitals table&#34;)
+        msg = &#34;Record inserted successfully into hospitals table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to insert into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to insert into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in addHospital: {}&#34;.format(e))
+        msg = &#34;Failed to insert into hospitals table {}&#34;.format(e)
+        return False, msg
+
+
+def updateHospitalInfo(data):
+    &#34;&#34;&#34;
+    Updates hospital information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Hospital information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+
+        mysql_update_query = &#34;&#34;&#34;UPDATE hospitals set name = %s, type = %s, addressline1 = %s, addressline2 = %s, city = %s, state = %s, country = %s, zipcode = %s, phone = %s, email = %s, approvalstatus = %s, isactive = %s, lastmoddate = %s  WHERE hospitalid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;name&#39;]), str(data[&#39;type&#39;]), str(data[&#39;addressline1&#39;]), str(data[&#39;addressline2&#39;]), str(data[&#39;city&#39;]), str(data[&#39;state&#39;]), str(
+            data[&#39;country&#39;]), str(data[&#39;zipcode&#39;]), str(data[&#39;phone&#39;]), str(data[&#39;email&#39;]), str(data[&#39;approvalstatus&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;hospitalid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into hospitals table&#34;)
+        msg = &#34;Record updated successfully into hospitals table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateHospitalInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def getHospitalDetails(hospitalid):
+    &#34;&#34;&#34;
+    Get details of the hospital with the given hospitalid.
+
+    Parameters
+    ----------
+    hospitalid : int
+        ID of the hospital.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email, hosp.approvalstatus, hosp.isactive, hosp.lastmoddate FROM hospitals hosp where hosp.hospitalid = %s&#39;, (int(hospitalid),))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;type&#34;: record[&#34;type&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                              &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;], &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getHospitals():
+    &#34;&#34;&#34;
+    Get details of all hospitals.
+
+    Parameters
+    ----------
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email, hosp.approvalstatus, hosp.isactive FROM hospitals hosp where hosp.isactive = &#34;TRUE&#34; and hosp.approvalstatus = &#34;TRUE&#34;&#39;)
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;type&#34;: record[&#34;type&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                              &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;], &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getAfiiliationByDoctor(ID):
+    &#34;&#34;&#34;
+    Gets all affiliated hospitals of a doctor given their ID.
+
+    Parameters
+    ----------
+    ID : int
+        ID of an doctor.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT affil.affiliationid, affil.hospitalid, affil.appointmentschedule, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email FROM affiliation affil inner join hospitals hosp on affil.hospitalid = hosp.hospitalid where affil.isactive = &#34;TRUE&#34; and hosp.approvalstatus = &#34;TRUE&#34; and affil.doctorid = %s&#39;, (int(ID),))
+        data = cursor.fetchall()
+        print(data)
+        for record in data:
+            finalData.append({&#34;affiliationid&#34;: record[&#34;affiliationid&#34;], &#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;appointmentschedule&#34;: record[&#34;appointmentschedule&#34;], &#34;name&#34;: record[&#34;name&#34;],
+                              &#34;addressline1&#34;: record[&#34;addressline1&#34;], &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;],
+                              &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAfiiliationByDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getAfiiliationByHospital(ID):
+    &#34;&#34;&#34;
+    Gets all affiliated doctors of a hospital given their ID.
+
+    Parameters
+    ----------
+    ID : int
+        ID of an hospital.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT affil.affiliationid, affil.doctorid, affil.appointmentschedule, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe FROM affiliation affil inner join doctors doc on affil.doctorid = doc.doctorid where affil.isactive = &#34;TRUE&#34; and doc.approvalstatus = &#34;TRUE&#34; and affil.hospitalid = %s&#39;, (int(ID),))
+        data = cursor.fetchall()
+        print(data)
+        for record in data:
+            finalData.append({&#34;affiliationid&#34;: record[&#34;affiliationid&#34;], &#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;appointmentschedule&#34;: record[&#34;appointmentschedule&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;],
+                              &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;], &#34;type&#34;: record[&#34;type&#34;],
+                              &#34;degree&#34;: record[&#34;degree&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAfiiliationByHospital: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def addAffiliation(doctorid, hospitalid, appointmentschedule):
+    &#34;&#34;&#34;
+    For future check if the doctorid and hospitalid are valid from the database
+
+    Parameters
+    ----------
+    doctorid : string
+        Id of the doctor.
+    hospitalid : string
+        Id of the hospital.
+    appointmentschedule : string
+        schedule sent as a json inside string
+
+    Returns
+    ----------
+    bool
+        Checks if the user got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        print(doctorid, hospitalid, appointmentschedule, isactive, lastmoddate)
+        cursor = connection.cursor(dictionary=True)
+        sql_insert_query = &#34;INSERT INTO affiliation (doctorid, hospitalid, appointmentschedule, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s)&#34;
+        cursor.execute(sql_insert_query, (doctorid, hospitalid,
+                       appointmentschedule, isactive, lastmoddate))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True, &#34;bla bal&#34;
+    except mysql.connector.Error as error:
+        print(&#34;some error occurred in addAffiliation: {}&#34;.format(error))
+        print(error)
+        return False,  str(error)
+    except Exception as e:
+        print(&#34;some error occurred in addAffiliation: {}&#34;.format(e))
+        return False,  str(e)
+
+
+def updateAffiliation(data):
+    &#34;&#34;&#34;
+    Updates an affiliation in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated affilfiation information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+        mysql_update_query = &#34;&#34;&#34;UPDATE affiliation set appointmentschedule = %s, isactive=%s, lastmoddate=%s WHERE affiliationid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;appointmentschedule&#39;]), str(
+            data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;affiliationid&#39;]))
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into affiliation table&#34;)
+        msg = &#34;Record updated successfully into affiliation table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateAffiliation: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def getDoctorSearch(keyword):
+    &#34;&#34;&#34;
+    Searches for doctor by firstname, lastname, primaryspecialty, secondaryspecialty
+
+    Parameters
+    ----------
+    keyword : string
+        keyword for search.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty FROM doctors doc where doc.firstname = %s or doc.lastname = %s or doc.primaryspecialty = %s or doc.secondaryspecialty= %s&#39;, (str(keyword), str(keyword), str(keyword), str(keyword)))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;],
+                             &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def getHospitalSearch(keyword):
+    &#34;&#34;&#34;
+    Searches for hospital by name, address
+
+    Parameters
+    ----------
+    keyword : string
+        keyword for search.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.zipcode FROM hospitals hosp where hosp.name = %s or hosp.addressline1 = %s or hosp.addressline2 = %s or hosp.city= %s or hosp.state = %s or hosp.zipcode= %s&#39;, (str(keyword), str(keyword), str(keyword), str(keyword), str(keyword), str(keyword)))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                             &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg
+
+
+def addAppointment(userid, doctorid, hospitalid, date, timeslot):
+    &#34;&#34;&#34;
+    For future check if the doctorid and hospitalid are valid from the database
+
+    Parameters
+    ----------
+    userid : string
+        Id of the doctor.
+    doctorid : string
+        Id of the doctor.
+    hospitalid : string
+        Id of the hospital.
+    date : string
+        appoitnment date
+    timeslot : string
+        appoitnment timeslot
+
+    Returns
+    ----------
+    bool
+        Checks if the appointment got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        cursor = connection.cursor(dictionary=True)
+        sql_insert_query = &#34;INSERT INTO appointment (userid, doctorid, hospitalid, date, timeslot, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s, %s, %s)&#34;
+        cursor.execute(sql_insert_query, (userid, doctorid,
+                       hospitalid, date, timeslot, isactive, lastmoddate))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True, &#34;Record added successsfully&#34;
+    except mysql.connector.Error as error:
+        print(&#34;some error occurred in addAppointment: {}&#34;.format(error))
+        print(error)
+        return False, error
+    except Exception as e:
+        print(&#34;some error occurred in addAppointment: {}&#34;.format(e))
+        return False, e
+
+
+def updateAppointmentInfo(data):
+    &#34;&#34;&#34;
+    Updates Appointment information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Appointment information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+
+        mysql_update_query = &#34;&#34;&#34;UPDATE appointment set  doctorid = %s, hospitalid = %s, date = %s, timeslot = %s, isactive = %s, lastmoddate = %s WHERE appointmentid = %s &#34;&#34;&#34;
+
+        input_data = ( int(data[&#39;doctorid&#39;]), int(data[&#39;hospitalid&#39;]), str(
+            data[&#39;date&#39;]), str(data[&#39;timeslot&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;appointmentid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into appointment table&#34;)
+        msg = &#34;Record updated successfully into appointment table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateHospitalInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def denyHospital(data):
+    &#34;&#34;&#34;
+    Denies a hospital
+    Parameters
+    ----------
+    data : json
+        Contains hospitalid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE hospitals set approvalstatus = %s, isactive = %s, comments = %s, lastmoddate = %s where hospitalid = %s&#34;
+        inputData = (&#34;FALSE&#34;, &#34;FALSE&#34;, str(
+            data[&#39;comments&#39;]), formattedDate, int(data[&#34;id&#34;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Denied&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(e))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(e)
+        return False, msg
+
+
+def removeUser(id):
+    &#34;&#34;&#34;
+    Removes a User
+    Parameters
+    ----------
+    id : int
+        ID of user to be removed
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute(&#34;Select userid from doctors where doctorid = %s&#34;, (id,))
+        details = cursor.fetchone()
+        id = int(details[&#34;userid&#34;])
+        cursor.execute(&#34;DELETE FROM users WHERE userid = %s&#34;,
+                       (id,))
+        cursor.execute(&#34;UPDATE doctors set userid = %s WHERE userid = %s&#34;, (-1, id))
+        connection.commit()
+        msg = &#34;User Removed&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into users table {}&#34;.format(error))
+        msg = &#34;Failed to update into users table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into users table {}&#34;.format(e))
+        msg = &#34;Failed to update into users table {}&#34;.format(e)
+        return False, msg
+
+
+def denyDoctor(data):
+    &#34;&#34;&#34;
+    Denies a doctor
+    Parameters
+    ----------
+    data : json
+        Contains doctorid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE doctors set approvalstatus = %s, isactive = %s, comments = %s, lastmoddate = %s where doctorid = %s&#34;
+        inputData = (&#34;FALSE&#34;, &#34;FALSE&#34;, str(
+            data[&#39;comments&#39;]), formattedDate, int(data[&#34;id&#34;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Denied&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into Doctors table {}&#34;.format(error))
+        msg = &#34;Failed to update into Doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into Doctors table {}&#34;.format(e))
+        msg = &#34;Failed to update into Doctors table {}&#34;.format(e)
+        return False, msg
+
+
+def updateHospitalStatus(data):
+    &#34;&#34;&#34;
+    Admin sets hospital status to TRUE.
+    Parameters
+    ----------
+    data : json
+        Contains hospitalid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE hospitals set approvalstatus = %s, lastmoddate = %s, comments = %s where hospitalid = %s&#34;
+        inputData = (&#34;TRUE&#34;,
+                     formattedDate, str(
+                         data[&#39;comments&#39;]), int(data[&#39;id&#39;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Approved&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(e))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(e)
+        return False, msg
+
+
+def updateDoctorStatus(data):
+    &#34;&#34;&#34;
+    Admin sets doctors status to TRUE.
+    Parameters
+    ----------
+    data : json
+        Contains doctorid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE doctors set approvalstatus = %s, lastmoddate = %s, comments = %s where doctorid = %s&#34;
+        inputData = (&#34;TRUE&#34;,
+                     formattedDate, str(data[&#34;comments&#34;]), int(data[&#39;id&#39;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Approved&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into doctors table {}&#34;.format(error))
+        msg = &#34;Failed to update into doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into doctors table {}&#34;.format(e))
+        msg = &#34;Failed to update into doctors table {}&#34;.format(e)
+        return False, msg
+
+
+def getUnapprovedDoctors():
+    &#34;&#34;&#34;
+    Gets all the unapproved doctors.
+    Parameters
+    ----------
+    None
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a list of unapproved doctors.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;Select * FROM doctors WHERE approvalstatus = %s&#34;, (&#34;FALSE&#34;,))
+        unapprovedDoctors = cursor.fetchall()
+        finalData = []
+        for record in unapprovedDoctors:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get unapproved Doctors {}&#34;.format(error))
+        msg = &#34;Failed to get unapproved Doctors {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getunapprovedDoctors: {}&#34;.format(e))
+        msg = &#34;Failed to get unapproved Doctors {}&#34;.format(e)
+        return False, msg
+
+
+def getUnapprovedHospitals():
+    &#34;&#34;&#34;
+    Gets all the unapproved hospitals.
+    Parameters
+    ----------
+    None
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a list of unapproved hospitals.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;Select * FROM hospitals WHERE approvalstatus = %s&#34;, (&#34;FALSE&#34;,))
+        unapprovedHospitals = cursor.fetchall()
+        finalData = []
+        for record in unapprovedHospitals:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get unapproved Hospitals {}&#34;.format(error))
+        msg = &#34;Failed to get unapproved Hospitals {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getunapprovedHospitals: {}&#34;.format(e))
+        msg = &#34;Failed to get unapproved Hospitals {}&#34;.format(e)
+        return False, msg
+
+
+def checkDuplicateEmail(email):
+    &#34;&#34;&#34;
+    Checks if an email is present twice in the database.
+    Parameters
+    ----------
+    email : string
+        Email of the user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there are two users with the same email. The second element is a status code of whether there is a database error or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        sqlSelectQuery = &#34;SELECT * FROM Users where email = %s&#34;
+        cursor.execute(sqlSelectQuery, (email,))
+        record = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        if record:
+            return True, 1
+        else:
+            return False, 1
+
+    except mysql.connector.Error as error:
+        print(error)
+        return (False, 0)
+
+    except Exception as e:
+        print(&#34;some error occurred in checkDuplicateEmail: {}&#34;.format(e))
+        return (False, 0)
+
+
+def addUser(data):
+    &#34;&#34;&#34;
+    Adds an user into the database
+    Parameters
+    ----------
+    data : json
+        Information about the user who is going to be added.
+    Returns
+    ----------
+    bool
+        Checks if the user got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        username = &#34; &#34;
+        firstname = str(data[&#34;name&#34;])
+        lastname = &#34; &#34;
+        usertype = str(data[&#34;userType&#34;])
+        gender = &#34; &#34;
+        email = str(data[&#34;email&#34;])
+        password = str(data[&#34;password&#34;])
+        phone = str(data[&#34;phoneNumber&#34;])
+        isactive = &#34;TRUE&#34;
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        sqlInsertQuery = &#34;INSERT INTO users (username, firstname, lastname, usertype, gender, email, password, phone, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)&#34;
+        cursor.execute(sqlInsertQuery, (username, firstname, lastname,
+                       usertype, gender, email, password, phone, isactive, formattedDate))
+
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True
+
+    except mysql.connector.Error as error:
+        print(error)
+        return False
+
+    except Exception as e:
+        print(&#34;some error occurred in addUser: {}&#34;.format(e))
+        return False
+
+
+def loginCheck(email, password):
+    &#34;&#34;&#34;
+    Checks if the password and email are matching in the database and returns the user
+    Parameters
+    ----------
+    email : string
+        Email of the user.
+    password : string
+        Password of the user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there is a user present with matching password and email. The second element is a status code of whether there is a database error or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;SELECT userid, username, email, usertype, phone, isactive FROM users WHERE email= %s AND password = %s&#34;, (email, password))
+        user = cursor.fetchone()
+        cursor.close()
+        connection.close()
+        if user:
+            return user, 1
+        else:
+            return [], 1
+
+    except mysql.connector.Error as error:
+        print(error)
+        return False, 0
+
+    except Exception as e:
+        print(&#34;some error occurred in loginCheck: {}&#34;.format(e))
+        return False, 0
+
+
+def getUserProfileByID(ID):
+    &#34;&#34;&#34;
+    Get the user information given his ID.
+    Parameters
+    ----------
+    ID : int
+        ID of the user.
+    Returns
+    ----------
+    list
+        Returns a list containing the information of an user given his id.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#39;SELECT username, email, firstname, lastname, gender, password, phone, isactive FROM users where userid = %s&#39;, (int(ID),))
+        user = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+        return user
+
+    except mysql.connector.Error as error:
+        print(error)
+        return []
+
+    except Exception as e:
+        print(&#34;some error occurred in getUserProfileByID: {}&#34;.format(e))
+        return []
+
+
+def getUserProfileByEmail(email):
+    &#34;&#34;&#34;
+    Get the user information given his emaild.
+    Parameters
+    ----------
+    email : str
+        emailid of the user.
+    Returns
+    ----------
+    list
+        Returns a list containing the information of an user given his email.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#39;SELECT userid FROM users where email = %s&#39;, (str(email),))
+        user = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+        return user
+
+    except mysql.connector.Error as error:
+        print(error)
+        return []
+
+    except Exception as e:
+        print(&#34;some error occurred in getUserProfileByEmail: {}&#34;.format(e))
+        return []
+
+
+def updateUserProfile(data):
+    &#34;&#34;&#34;
+    Updates an user in the database.
+    Parameters
+    ----------
+    data : json
+        Updated user information.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        sqlUpdateQuery = &#34;UPDATE users set username = %s, email = %s, firstname = %s, lastname = %s, gender = %s, password = %s, phone = %s, isactive = %s, lastmoddate = %s WHERE userid = %s&#34;
+        inputData = (str(data[&#39;username&#39;]), str(data[&#39;email&#39;]),
+                     str(data[&#34;firstname&#34;]), str(data[&#34;lastname&#34;]), str(data[&#34;gender&#34;]), str(
+            data[&#34;password&#34;]), str(data[&#34;phone&#34;]), str(data[&#34;isactive&#34;]), formattedDate, int(data[&#34;userid&#34;]))
+        cursor.execute(sqlUpdateQuery, inputData)
+        connection.commit()
+
+        print(&#34;Record updated successfully into users table&#34;)
+        msg = &#34;Record updated successfully into users table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateUserProfile: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def getAppointmentInfoUserDB(id):
+    &#34;&#34;&#34;
+    Gets Appointment for User.
+    Parameters
+    ----------
+    id : int
+        userid.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(&#34;SELECT hospitals.name, hospitals.addressline1, appointment.userid, appointment.appointmentid, appointment.hospitalid, appointment.timeslot, appointment.isactive, appointment.date, doctors.firstname, doctors.lastname, doctors.primaryspecialty, doctors.secondaryspecialty, doctors.type, doctors.doctorid, doctors.degree, doctors.phone, doctors.email, doctors.gender FROM doctors INNER JOIN appointment ON doctors.doctorid = appointment.doctorid INNER JOIN hospitals ON hospitals.hospitalid = appointment.hospitalid  WHERE appointment.userid = %s&#34;, (int(id),))
+        appointmentInfo = cursor.fetchall()
+        finalData = []
+        for record in appointmentInfo:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get information from table {}&#34;.format(error))
+        msg = &#34;Failed to get information from table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAppointmentInfoUser: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg
+
+
+def getAppointmentInfoDoctorDB(id):
+    &#34;&#34;&#34;
+    Gets Appointment for Doctor.
+    Parameters
+    ----------
+    id : int
+        Doctorid.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(&#34;SELECT hospitals.name, hospitals.addressline1, appointment.doctorid, appointment.appointmentid ,appointment.hospitalid, appointment.isactive, appointment.timeslot, appointment.date, users.firstname FROM users INNER JOIN appointment ON users.userid = appointment.userid INNER JOIN hospitals ON hospitals.hospitalid = appointment.hospitalid WHERE appointment.doctorid = %s&#34;, (int(id),))
+        appointmentInfo = cursor.fetchall()
+        finalData = []
+        for record in appointmentInfo:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get information from table {}&#34;.format(error))
+        msg = &#34;Failed to get information from table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAppointmentInfoDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="backend.utils.addAffiliation"><code class="name flex">
+<span>def <span class="ident">addAffiliation</span></span>(<span>doctorid, hospitalid, appointmentschedule)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For future check if the doctorid and hospitalid are valid from the database</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>doctorid</code></strong> :&ensp;<code>string</code></dt>
+<dd>Id of the doctor.</dd>
+<dt><strong><code>hospitalid</code></strong> :&ensp;<code>string</code></dt>
+<dd>Id of the hospital.</dd>
+<dt><strong><code>appointmentschedule</code></strong> :&ensp;<code>string</code></dt>
+<dd>schedule sent as a json inside string</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Checks if the user got added to the database or not.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAffiliation(doctorid, hospitalid, appointmentschedule):
+    &#34;&#34;&#34;
+    For future check if the doctorid and hospitalid are valid from the database
+
+    Parameters
+    ----------
+    doctorid : string
+        Id of the doctor.
+    hospitalid : string
+        Id of the hospital.
+    appointmentschedule : string
+        schedule sent as a json inside string
+
+    Returns
+    ----------
+    bool
+        Checks if the user got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        print(doctorid, hospitalid, appointmentschedule, isactive, lastmoddate)
+        cursor = connection.cursor(dictionary=True)
+        sql_insert_query = &#34;INSERT INTO affiliation (doctorid, hospitalid, appointmentschedule, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s)&#34;
+        cursor.execute(sql_insert_query, (doctorid, hospitalid,
+                       appointmentschedule, isactive, lastmoddate))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True, &#34;bla bal&#34;
+    except mysql.connector.Error as error:
+        print(&#34;some error occurred in addAffiliation: {}&#34;.format(error))
+        print(error)
+        return False,  str(error)
+    except Exception as e:
+        print(&#34;some error occurred in addAffiliation: {}&#34;.format(e))
+        return False,  str(e)</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.addAppointment"><code class="name flex">
+<span>def <span class="ident">addAppointment</span></span>(<span>userid, doctorid, hospitalid, date, timeslot)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>For future check if the doctorid and hospitalid are valid from the database</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>userid</code></strong> :&ensp;<code>string</code></dt>
+<dd>Id of the doctor.</dd>
+<dt><strong><code>doctorid</code></strong> :&ensp;<code>string</code></dt>
+<dd>Id of the doctor.</dd>
+<dt><strong><code>hospitalid</code></strong> :&ensp;<code>string</code></dt>
+<dd>Id of the hospital.</dd>
+<dt><strong><code>date</code></strong> :&ensp;<code>string</code></dt>
+<dd>appoitnment date</dd>
+<dt><strong><code>timeslot</code></strong> :&ensp;<code>string</code></dt>
+<dd>appoitnment timeslot</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Checks if the appointment got added to the database or not.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAppointment(userid, doctorid, hospitalid, date, timeslot):
+    &#34;&#34;&#34;
+    For future check if the doctorid and hospitalid are valid from the database
+
+    Parameters
+    ----------
+    userid : string
+        Id of the doctor.
+    doctorid : string
+        Id of the doctor.
+    hospitalid : string
+        Id of the hospital.
+    date : string
+        appoitnment date
+    timeslot : string
+        appoitnment timeslot
+
+    Returns
+    ----------
+    bool
+        Checks if the appointment got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        cursor = connection.cursor(dictionary=True)
+        sql_insert_query = &#34;INSERT INTO appointment (userid, doctorid, hospitalid, date, timeslot, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s, %s, %s)&#34;
+        cursor.execute(sql_insert_query, (userid, doctorid,
+                       hospitalid, date, timeslot, isactive, lastmoddate))
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True, &#34;Record added successsfully&#34;
+    except mysql.connector.Error as error:
+        print(&#34;some error occurred in addAppointment: {}&#34;.format(error))
+        print(error)
+        return False, error
+    except Exception as e:
+        print(&#34;some error occurred in addAppointment: {}&#34;.format(e))
+        return False, e</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.addDoctor"><code class="name flex">
+<span>def <span class="ident">addDoctor</span></span>(<span>lastname, primaryspecialty, phone, email, yoe, userid, firstname='Dr.', secondaryspecialty=' ', type=' ', degree=' ', gender=' ')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inserts doctor info into the database.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>firstname</code></strong> :&ensp;<code>string</code></dt>
+<dd>First name of the doctor.</dd>
+<dt><strong><code>lastname</code></strong> :&ensp;<code>string</code></dt>
+<dd>Last name of the doctor.</dd>
+<dt><strong><code>primaryspecialty</code></strong> :&ensp;<code>string</code></dt>
+<dd>Primary specialty of the doctor. For eg. Dermatology, Neurology etc.</dd>
+<dt><strong><code>secondaryspecialty</code></strong> :&ensp;<code>string</code></dt>
+<dd>Secondary specialty of the doctor, other than primaryspecialty. This can be NULL. For eg. Dermatology, Neurology etc.</dd>
+<dt><strong><code>type</code></strong> :&ensp;<code>string</code></dt>
+<dd>Type of the doctor. For eg. Prescriber, Non Prescriber.</dd>
+<dt><strong><code>degree</code></strong> :&ensp;<code>int</code></dt>
+<dd>Degree owned by the doctor. For eg. MBBS, MD etc.</dd>
+<dt><strong><code>phone</code></strong> :&ensp;<code>string</code></dt>
+<dd>Contact number of the doctor.</dd>
+<dt><strong><code>email</code></strong> :&ensp;<code>string</code></dt>
+<dd>Email id of the doctor.</dd>
+<dt><strong><code>gender</code></strong> :&ensp;<code>string</code></dt>
+<dd>Gender of the doctor. For eg. Male, Female etc.</dd>
+<dt><strong><code>yoe</code></strong> :&ensp;<code>string</code></dt>
+<dd>Years of experience of the doctor.</dd>
+<dt><strong><code>userid</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the doctor (Doctor also an user)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDoctor(lastname, primaryspecialty, phone, email, yoe, userid, firstname=&#34;Dr.&#34;, secondaryspecialty=&#34; &#34;, type=&#34; &#34;, degree=&#34; &#34;, gender=&#34; &#34;):
+    &#34;&#34;&#34;
+    Inserts doctor info into the database.
+    Parameters
+    ----------
+    firstname : string
+        First name of the doctor.
+    lastname : string
+        Last name of the doctor.
+    primaryspecialty : string
+        Primary specialty of the doctor. For eg. Dermatology, Neurology etc.
+    secondaryspecialty : string
+        Secondary specialty of the doctor, other than primaryspecialty. This can be NULL. For eg. Dermatology, Neurology etc.
+    type : string
+        Type of the doctor. For eg. Prescriber, Non Prescriber.
+    degree : int
+        Degree owned by the doctor. For eg. MBBS, MD etc.
+    phone : string
+        Contact number of the doctor.
+    email : string
+        Email id of the doctor.
+    gender : string
+        Gender of the doctor. For eg. Male, Female etc.
+    yoe : string
+        Years of experience of the doctor.
+    userid : int
+        ID of the doctor (Doctor also an user)
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        approvalstatus = &#34;FALSE&#34;
+        cursor = connection.cursor(dictionary=True)
+        mysql_insert_query = &#34;&#34;&#34;INSERT INTO doctors (firstname, lastname, primaryspecialty, secondaryspecialty, type, degree, phone, email, gender, yoe, approvalstatus, isactive, lastmoddate, userid)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) &#34;&#34;&#34;
+
+        record = (firstname, lastname, primaryspecialty, secondaryspecialty, type, degree,
+                  phone, email, gender, yoe, approvalstatus, isactive, lastmoddate, int(userid))
+        cursor.execute(mysql_insert_query, record)
+        connection.commit()
+        print(&#34;Record inserted successfully into doctors table&#34;)
+        msg = &#34;Record inserted successfully into doctors table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to insert into doctors table {}&#34;.format(error))
+        msg = &#34;Failed to insert into doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in addDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to insert into doctors table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.addHospital"><code class="name flex">
+<span>def <span class="ident">addHospital</span></span>(<span>name, addressline1, phone, email, city=' ', state=' ', country=' ', zipcode=' ', type='HOSPITAL', addressline2=' ')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inserts doctor info into the database.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>string</code></dt>
+<dd>Name of the hospital</dd>
+<dt><strong><code>type</code></strong> :&ensp;<code>string</code></dt>
+<dd>Type of hospital</dd>
+<dt><strong><code>addressline1</code></strong> :&ensp;<code>string</code></dt>
+<dd>address of hospital</dd>
+<dt><strong><code>addressline2</code></strong> :&ensp;<code>string</code></dt>
+<dd>address of hospital</dd>
+<dt><strong><code>city</code></strong> :&ensp;<code>string</code></dt>
+<dd>City of the hospital</dd>
+<dt><strong><code>state</code></strong> :&ensp;<code>string</code></dt>
+<dd>State of the hospital</dd>
+<dt><strong><code>country</code></strong> :&ensp;<code>string</code></dt>
+<dd>State of the hospital</dd>
+<dt><strong><code>zipcode</code></strong> :&ensp;<code>string</code></dt>
+<dd>Zip code of the hospital</dd>
+<dt><strong><code>phone</code></strong> :&ensp;<code>string</code></dt>
+<dd>Contact number of the hospital.</dd>
+<dt><strong><code>email</code></strong> :&ensp;<code>string</code></dt>
+<dd>Email id of the hospital.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addHospital(name, addressline1, phone, email, city=&#34; &#34;, state=&#34; &#34;, country=&#34; &#34;, zipcode=&#34; &#34;, type=&#34;HOSPITAL&#34;, addressline2=&#34; &#34;):
+    &#34;&#34;&#34;
+    Inserts doctor info into the database.
+    Parameters
+    ----------
+    name : string
+        Name of the hospital
+    type : string
+        Type of hospital
+    addressline1 : string
+        address of hospital
+    addressline2 : string
+        address of hospital
+    city : string
+        City of the hospital
+    state : string
+        State of the hospital
+    country : string
+        State of the hospital
+    zipcode : string
+        Zip code of the hospital
+    phone : string
+        Contact number of the hospital.
+    email : string
+        Email id of the hospital.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        isactive = &#34;TRUE&#34;
+        approvalstatus = &#34;FALSE&#34;
+        cursor = connection.cursor(dictionary=True)
+        mysql_insert_query = &#34;&#34;&#34;INSERT INTO hospitals (name, type, addressline1, addressline2, city, state, country, zipcode, phone, email, approvalstatus, isactive, lastmoddate)
+                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) &#34;&#34;&#34;
+
+        record = (name, type, addressline1, addressline2, city, state, country,
+                  zipcode, phone, email, approvalstatus, isactive, lastmoddate)
+        cursor.execute(mysql_insert_query, record)
+        connection.commit()
+        print(&#34;Record inserted successfully into hospitals table&#34;)
+        msg = &#34;Record inserted successfully into hospitals table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to insert into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to insert into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in addHospital: {}&#34;.format(e))
+        msg = &#34;Failed to insert into hospitals table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.addUser"><code class="name flex">
+<span>def <span class="ident">addUser</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds an user into the database
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about the user who is going to be added.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Checks if the user got added to the database or not.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addUser(data):
+    &#34;&#34;&#34;
+    Adds an user into the database
+    Parameters
+    ----------
+    data : json
+        Information about the user who is going to be added.
+    Returns
+    ----------
+    bool
+        Checks if the user got added to the database or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        username = &#34; &#34;
+        firstname = str(data[&#34;name&#34;])
+        lastname = &#34; &#34;
+        usertype = str(data[&#34;userType&#34;])
+        gender = &#34; &#34;
+        email = str(data[&#34;email&#34;])
+        password = str(data[&#34;password&#34;])
+        phone = str(data[&#34;phoneNumber&#34;])
+        isactive = &#34;TRUE&#34;
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        sqlInsertQuery = &#34;INSERT INTO users (username, firstname, lastname, usertype, gender, email, password, phone, isactive, lastmoddate) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)&#34;
+        cursor.execute(sqlInsertQuery, (username, firstname, lastname,
+                       usertype, gender, email, password, phone, isactive, formattedDate))
+
+        connection.commit()
+        cursor.close()
+        connection.close()
+        return True
+
+    except mysql.connector.Error as error:
+        print(error)
+        return False
+
+    except Exception as e:
+        print(&#34;some error occurred in addUser: {}&#34;.format(e))
+        return False</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.checkDuplicateEmail"><code class="name flex">
+<span>def <span class="ident">checkDuplicateEmail</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if an email is present twice in the database.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>email</code></strong> :&ensp;<code>string</code></dt>
+<dd>Email of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there are two users with the same email. The second element is a status code of whether there is a database error or not.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def checkDuplicateEmail(email):
+    &#34;&#34;&#34;
+    Checks if an email is present twice in the database.
+    Parameters
+    ----------
+    email : string
+        Email of the user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there are two users with the same email. The second element is a status code of whether there is a database error or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        sqlSelectQuery = &#34;SELECT * FROM Users where email = %s&#34;
+        cursor.execute(sqlSelectQuery, (email,))
+        record = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        if record:
+            return True, 1
+        else:
+            return False, 1
+
+    except mysql.connector.Error as error:
+        print(error)
+        return (False, 0)
+
+    except Exception as e:
+        print(&#34;some error occurred in checkDuplicateEmail: {}&#34;.format(e))
+        return (False, 0)</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.db_connection"><code class="name flex">
+<span>def <span class="ident">db_connection</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def db_connection():
+    try:
+        connection = mysql.connector.connect(
+            host=constants[&#34;host&#34;], user=constants[&#34;user&#34;], password=constants[&#34;password&#34;], database=constants[&#34;database&#34;])
+    # except:
+        return connection
+        
+    except mysql.connector.Error as err:
+        if err.errno == mysql.connector.errorcode.ER_ACCESS_DENIED_ERROR:
+            print(&#34;Something is wrong with your user name or password&#34;)
+        elif err.errno == mysql.connector.errorcode.ER_BAD_DV_ERROR:
+            print(&#34;Database does not exist&#34;)
+        else:
+            print(err)</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.denyDoctor"><code class="name flex">
+<span>def <span class="ident">denyDoctor</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Denies a doctor
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Contains doctorid which is needed to change the status.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def denyDoctor(data):
+    &#34;&#34;&#34;
+    Denies a doctor
+    Parameters
+    ----------
+    data : json
+        Contains doctorid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE doctors set approvalstatus = %s, isactive = %s, comments = %s, lastmoddate = %s where doctorid = %s&#34;
+        inputData = (&#34;FALSE&#34;, &#34;FALSE&#34;, str(
+            data[&#39;comments&#39;]), formattedDate, int(data[&#34;id&#34;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Denied&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into Doctors table {}&#34;.format(error))
+        msg = &#34;Failed to update into Doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into Doctors table {}&#34;.format(e))
+        msg = &#34;Failed to update into Doctors table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.denyHospital"><code class="name flex">
+<span>def <span class="ident">denyHospital</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Denies a hospital
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Contains hospitalid which is needed to change the status.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def denyHospital(data):
+    &#34;&#34;&#34;
+    Denies a hospital
+    Parameters
+    ----------
+    data : json
+        Contains hospitalid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE hospitals set approvalstatus = %s, isactive = %s, comments = %s, lastmoddate = %s where hospitalid = %s&#34;
+        inputData = (&#34;FALSE&#34;, &#34;FALSE&#34;, str(
+            data[&#39;comments&#39;]), formattedDate, int(data[&#34;id&#34;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Denied&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(e))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getAfiiliationByDoctor"><code class="name flex">
+<span>def <span class="ident">getAfiiliationByDoctor</span></span>(<span>ID)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets all affiliated hospitals of a doctor given their ID.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>ID</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of an doctor.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAfiiliationByDoctor(ID):
+    &#34;&#34;&#34;
+    Gets all affiliated hospitals of a doctor given their ID.
+
+    Parameters
+    ----------
+    ID : int
+        ID of an doctor.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT affil.affiliationid, affil.hospitalid, affil.appointmentschedule, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email FROM affiliation affil inner join hospitals hosp on affil.hospitalid = hosp.hospitalid where affil.isactive = &#34;TRUE&#34; and hosp.approvalstatus = &#34;TRUE&#34; and affil.doctorid = %s&#39;, (int(ID),))
+        data = cursor.fetchall()
+        print(data)
+        for record in data:
+            finalData.append({&#34;affiliationid&#34;: record[&#34;affiliationid&#34;], &#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;appointmentschedule&#34;: record[&#34;appointmentschedule&#34;], &#34;name&#34;: record[&#34;name&#34;],
+                              &#34;addressline1&#34;: record[&#34;addressline1&#34;], &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;],
+                              &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAfiiliationByDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getAfiiliationByHospital"><code class="name flex">
+<span>def <span class="ident">getAfiiliationByHospital</span></span>(<span>ID)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets all affiliated doctors of a hospital given their ID.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>ID</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of an hospital.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAfiiliationByHospital(ID):
+    &#34;&#34;&#34;
+    Gets all affiliated doctors of a hospital given their ID.
+
+    Parameters
+    ----------
+    ID : int
+        ID of an hospital.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT affil.affiliationid, affil.doctorid, affil.appointmentschedule, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe FROM affiliation affil inner join doctors doc on affil.doctorid = doc.doctorid where affil.isactive = &#34;TRUE&#34; and doc.approvalstatus = &#34;TRUE&#34; and affil.hospitalid = %s&#39;, (int(ID),))
+        data = cursor.fetchall()
+        print(data)
+        for record in data:
+            finalData.append({&#34;affiliationid&#34;: record[&#34;affiliationid&#34;], &#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;appointmentschedule&#34;: record[&#34;appointmentschedule&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;],
+                              &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;], &#34;type&#34;: record[&#34;type&#34;],
+                              &#34;degree&#34;: record[&#34;degree&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAfiiliationByHospital: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getAppointmentInfoDoctorDB"><code class="name flex">
+<span>def <span class="ident">getAppointmentInfoDoctorDB</span></span>(<span>id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets Appointment for Doctor.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Doctorid.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAppointmentInfoDoctorDB(id):
+    &#34;&#34;&#34;
+    Gets Appointment for Doctor.
+    Parameters
+    ----------
+    id : int
+        Doctorid.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(&#34;SELECT hospitals.name, hospitals.addressline1, appointment.doctorid, appointment.appointmentid ,appointment.hospitalid, appointment.isactive, appointment.timeslot, appointment.date, users.firstname FROM users INNER JOIN appointment ON users.userid = appointment.userid INNER JOIN hospitals ON hospitals.hospitalid = appointment.hospitalid WHERE appointment.doctorid = %s&#34;, (int(id),))
+        appointmentInfo = cursor.fetchall()
+        finalData = []
+        for record in appointmentInfo:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get information from table {}&#34;.format(error))
+        msg = &#34;Failed to get information from table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAppointmentInfoDoctor: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getAppointmentInfoUserDB"><code class="name flex">
+<span>def <span class="ident">getAppointmentInfoUserDB</span></span>(<span>id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets Appointment for User.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>userid.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAppointmentInfoUserDB(id):
+    &#34;&#34;&#34;
+    Gets Appointment for User.
+    Parameters
+    ----------
+    id : int
+        userid.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(&#34;SELECT hospitals.name, hospitals.addressline1, appointment.userid, appointment.appointmentid, appointment.hospitalid, appointment.timeslot, appointment.isactive, appointment.date, doctors.firstname, doctors.lastname, doctors.primaryspecialty, doctors.secondaryspecialty, doctors.type, doctors.doctorid, doctors.degree, doctors.phone, doctors.email, doctors.gender FROM doctors INNER JOIN appointment ON doctors.doctorid = appointment.doctorid INNER JOIN hospitals ON hospitals.hospitalid = appointment.hospitalid  WHERE appointment.userid = %s&#34;, (int(id),))
+        appointmentInfo = cursor.fetchall()
+        finalData = []
+        for record in appointmentInfo:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get information from table {}&#34;.format(error))
+        msg = &#34;Failed to get information from table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getAppointmentInfoUser: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getDoctorDetails"><code class="name flex">
+<span>def <span class="ident">getDoctorDetails</span></span>(<span>doctorid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of the doctor with the given doctorid.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>doctorid</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the doctor.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDoctorDetails(doctorid):
+    &#34;&#34;&#34;
+    Get details of the doctor with the given doctorid.
+    Parameters
+    ----------
+    doctorid : int
+        ID of the doctor.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.approvalstatus, doc.isactive, doc.lastmoddate, doc.userid FROM doctors doc WHERE doc.doctorid = %s&#39;, (int(doctorid),))
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;], &#34;userid&#34;: record[&#34;userid&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorInfo: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getDoctorDetailsByUserID"><code class="name flex">
+<span>def <span class="ident">getDoctorDetailsByUserID</span></span>(<span>userid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of the doctor with the given userid.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>userid</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the doctor as user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDoctorDetailsByUserID(userid):
+    &#34;&#34;&#34;
+    Get details of the doctor with the given userid.
+    Parameters
+    ----------
+    userid : int
+        ID of the doctor as user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.approvalstatus, doc.isactive, doc.lastmoddate, doc.userid FROM doctors doc WHERE doc.userid = %s&#39;, (int(userid),))
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;], &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;yoe&#34;: record[&#34;yoe&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;], &#34;userid&#34;: record[&#34;userid&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorDetailsByUserID: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getDoctorSearch"><code class="name flex">
+<span>def <span class="ident">getDoctorSearch</span></span>(<span>keyword)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Searches for doctor by firstname, lastname, primaryspecialty, secondaryspecialty</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>keyword</code></strong> :&ensp;<code>string</code></dt>
+<dd>keyword for search.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDoctorSearch(keyword):
+    &#34;&#34;&#34;
+    Searches for doctor by firstname, lastname, primaryspecialty, secondaryspecialty
+
+    Parameters
+    ----------
+    keyword : string
+        keyword for search.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty FROM doctors doc where doc.firstname = %s or doc.lastname = %s or doc.primaryspecialty = %s or doc.secondaryspecialty= %s&#39;, (str(keyword), str(keyword), str(keyword), str(keyword)))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;firstname&#34;: record[&#34;firstname&#34;], &#34;lastname&#34;: record[&#34;lastname&#34;],
+                             &#34;primaryspecialty&#34;: record[&#34;primaryspecialty&#34;], &#34;secondaryspecialty&#34;: record[&#34;secondaryspecialty&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getDoctors"><code class="name flex">
+<span>def <span class="ident">getDoctors</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of all the doctor.
+Parameters</p>
+<hr>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDoctors():
+    &#34;&#34;&#34;
+    Get details of all the doctor.
+    Parameters
+    ----------
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is the list of info of doctor.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT doc.doctorid, doc.firstname, doc.lastname, doc.primaryspecialty, doc.secondaryspecialty, doc.type, doc.degree, doc.phone, doc.email, doc.gender, doc.yoe, doc.isactive FROM doctors doc WHERE doc.isactive = &#34;TRUE&#34; and doc.approvalstatus = &#34;TRUE&#34;&#39;)
+
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;doctorid&#34;: record[&#34;doctorid&#34;], &#34;name&#34;: record[&#34;firstname&#34;] + record[&#34;lastname&#34;], &#34;specialization&#34;: record[&#34;primaryspecialty&#34;],  &#34;type&#34;: record[&#34;type&#34;], &#34;degree&#34;: record[&#34;degree&#34;],
+                              &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;gender&#34;: record[&#34;gender&#34;], &#34;experience&#34;: record[&#34;yoe&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getDoctorList: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getHospitalDetails"><code class="name flex">
+<span>def <span class="ident">getHospitalDetails</span></span>(<span>hospitalid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of the hospital with the given hospitalid.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>hospitalid</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the hospital.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHospitalDetails(hospitalid):
+    &#34;&#34;&#34;
+    Get details of the hospital with the given hospitalid.
+
+    Parameters
+    ----------
+    hospitalid : int
+        ID of the hospital.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email, hosp.approvalstatus, hosp.isactive, hosp.lastmoddate FROM hospitals hosp where hosp.hospitalid = %s&#39;, (int(hospitalid),))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;type&#34;: record[&#34;type&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                              &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;], &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;], &#34;approvalstatus&#34;: record[&#34;approvalstatus&#34;], &#34;isactive&#34;: record[&#34;isactive&#34;], &#34;lastmoddate&#34;: record[&#34;lastmoddate&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getHospitalSearch"><code class="name flex">
+<span>def <span class="ident">getHospitalSearch</span></span>(<span>keyword)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Searches for hospital by name, address</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>keyword</code></strong> :&ensp;<code>string</code></dt>
+<dd>keyword for search.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHospitalSearch(keyword):
+    &#34;&#34;&#34;
+    Searches for hospital by name, address
+
+    Parameters
+    ----------
+    keyword : string
+        keyword for search.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of all data.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.zipcode FROM hospitals hosp where hosp.name = %s or hosp.addressline1 = %s or hosp.addressline2 = %s or hosp.city= %s or hosp.state = %s or hosp.zipcode= %s&#39;, (str(keyword), str(keyword), str(keyword), str(keyword), str(keyword), str(keyword)))
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                             &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getHospitals"><code class="name flex">
+<span>def <span class="ident">getHospitals</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get details of all hospitals.</p>
+<h2 id="parameters">Parameters</h2>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHospitals():
+    &#34;&#34;&#34;
+    Get details of all hospitals.
+
+    Parameters
+    ----------
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a list of info of hospital.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        finalData = []
+        cursor.execute(
+            &#39;SELECT hosp.hospitalid, hosp.name, hosp.type, hosp.addressline1, hosp.addressline2, hosp.city, hosp.state, hosp.country, hosp.zipcode, hosp.phone, hosp.email, hosp.approvalstatus, hosp.isactive FROM hospitals hosp where hosp.isactive = &#34;TRUE&#34; and hosp.approvalstatus = &#34;TRUE&#34;&#39;)
+        data = cursor.fetchall()
+        for record in data:
+            finalData.append({&#34;hospitalid&#34;: record[&#34;hospitalid&#34;], &#34;name&#34;: record[&#34;name&#34;], &#34;type&#34;: record[&#34;type&#34;], &#34;addressline1&#34;: record[&#34;addressline1&#34;],
+                              &#34;addressline2&#34;: record[&#34;addressline2&#34;], &#34;city&#34;: record[&#34;city&#34;], &#34;state&#34;: record[&#34;state&#34;], &#34;country&#34;: record[&#34;country&#34;], &#34;zipcode&#34;: record[&#34;zipcode&#34;], &#34;phone&#34;: record[&#34;phone&#34;], &#34;email&#34;: record[&#34;email&#34;]})
+        cursor.close()
+        connection.close()
+        return True, finalData
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get data {}&#34;.format(error))
+        msg = &#34;Failed to get data {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getHospitalSearch: {}&#34;.format(e))
+        msg = &#34;Failed to get data {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getUnapprovedDoctors"><code class="name flex">
+<span>def <span class="ident">getUnapprovedDoctors</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets all the unapproved doctors.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a list of unapproved doctors.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnapprovedDoctors():
+    &#34;&#34;&#34;
+    Gets all the unapproved doctors.
+    Parameters
+    ----------
+    None
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a list of unapproved doctors.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;Select * FROM doctors WHERE approvalstatus = %s&#34;, (&#34;FALSE&#34;,))
+        unapprovedDoctors = cursor.fetchall()
+        finalData = []
+        for record in unapprovedDoctors:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get unapproved Doctors {}&#34;.format(error))
+        msg = &#34;Failed to get unapproved Doctors {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getunapprovedDoctors: {}&#34;.format(e))
+        msg = &#34;Failed to get unapproved Doctors {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getUnapprovedHospitals"><code class="name flex">
+<span>def <span class="ident">getUnapprovedHospitals</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets all the unapproved hospitals.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a list of unapproved hospitals.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnapprovedHospitals():
+    &#34;&#34;&#34;
+    Gets all the unapproved hospitals.
+    Parameters
+    ----------
+    None
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a list of unapproved hospitals.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;Select * FROM hospitals WHERE approvalstatus = %s&#34;, (&#34;FALSE&#34;,))
+        unapprovedHospitals = cursor.fetchall()
+        finalData = []
+        for record in unapprovedHospitals:
+            finalData.append(record)
+
+        cursor.close()
+        connection.close()
+        return True, finalData
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to get unapproved Hospitals {}&#34;.format(error))
+        msg = &#34;Failed to get unapproved Hospitals {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in getunapprovedHospitals: {}&#34;.format(e))
+        msg = &#34;Failed to get unapproved Hospitals {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getUserProfileByEmail"><code class="name flex">
+<span>def <span class="ident">getUserProfileByEmail</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the user information given his emaild.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>email</code></strong> :&ensp;<code>str</code></dt>
+<dd>emailid of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>Returns a list containing the information of an user given his email.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUserProfileByEmail(email):
+    &#34;&#34;&#34;
+    Get the user information given his emaild.
+    Parameters
+    ----------
+    email : str
+        emailid of the user.
+    Returns
+    ----------
+    list
+        Returns a list containing the information of an user given his email.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#39;SELECT userid FROM users where email = %s&#39;, (str(email),))
+        user = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+        return user
+
+    except mysql.connector.Error as error:
+        print(error)
+        return []
+
+    except Exception as e:
+        print(&#34;some error occurred in getUserProfileByEmail: {}&#34;.format(e))
+        return []</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.getUserProfileByID"><code class="name flex">
+<span>def <span class="ident">getUserProfileByID</span></span>(<span>ID)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the user information given his ID.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>ID</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>Returns a list containing the information of an user given his id.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUserProfileByID(ID):
+    &#34;&#34;&#34;
+    Get the user information given his ID.
+    Parameters
+    ----------
+    ID : int
+        ID of the user.
+    Returns
+    ----------
+    list
+        Returns a list containing the information of an user given his id.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#39;SELECT username, email, firstname, lastname, gender, password, phone, isactive FROM users where userid = %s&#39;, (int(ID),))
+        user = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+        return user
+
+    except mysql.connector.Error as error:
+        print(error)
+        return []
+
+    except Exception as e:
+        print(&#34;some error occurred in getUserProfileByID: {}&#34;.format(e))
+        return []</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.loginCheck"><code class="name flex">
+<span>def <span class="ident">loginCheck</span></span>(<span>email, password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the password and email are matching in the database and returns the user
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>email</code></strong> :&ensp;<code>string</code></dt>
+<dd>Email of the user.</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
+<dd>Password of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there is a user present with matching password and email. The second element is a status code of whether there is a database error or not.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loginCheck(email, password):
+    &#34;&#34;&#34;
+    Checks if the password and email are matching in the database and returns the user
+    Parameters
+    ----------
+    email : string
+        Email of the user.
+    password : string
+        Password of the user.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) is a check to see if there is a user present with matching password and email. The second element is a status code of whether there is a database error or not.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(
+            &#34;SELECT userid, username, email, usertype, phone, isactive FROM users WHERE email= %s AND password = %s&#34;, (email, password))
+        user = cursor.fetchone()
+        cursor.close()
+        connection.close()
+        if user:
+            return user, 1
+        else:
+            return [], 1
+
+    except mysql.connector.Error as error:
+        print(error)
+        return False, 0
+
+    except Exception as e:
+        print(&#34;some error occurred in loginCheck: {}&#34;.format(e))
+        return False, 0</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.removeUser"><code class="name flex">
+<span>def <span class="ident">removeUser</span></span>(<span>id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Removes a User
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of user to be removed</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeUser(id):
+    &#34;&#34;&#34;
+    Removes a User
+    Parameters
+    ----------
+    id : int
+        ID of user to be removed
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        cursor = connection.cursor(dictionary=True)
+
+        cursor.execute(&#34;Select userid from doctors where doctorid = %s&#34;, (id,))
+        details = cursor.fetchone()
+        id = int(details[&#34;userid&#34;])
+        cursor.execute(&#34;DELETE FROM users WHERE userid = %s&#34;,
+                       (id,))
+        cursor.execute(&#34;UPDATE doctors set userid = %s WHERE userid = %s&#34;, (-1, id))
+        connection.commit()
+        msg = &#34;User Removed&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into users table {}&#34;.format(error))
+        msg = &#34;Failed to update into users table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into users table {}&#34;.format(e))
+        msg = &#34;Failed to update into users table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateAffiliation"><code class="name flex">
+<span>def <span class="ident">updateAffiliation</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates an affiliation in the database.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated affilfiation information.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateAffiliation(data):
+    &#34;&#34;&#34;
+    Updates an affiliation in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated affilfiation information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+        mysql_update_query = &#34;&#34;&#34;UPDATE affiliation set appointmentschedule = %s, isactive=%s, lastmoddate=%s WHERE affiliationid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;appointmentschedule&#39;]), str(
+            data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;affiliationid&#39;]))
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into affiliation table&#34;)
+        msg = &#34;Record updated successfully into affiliation table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateAffiliation: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateAppointmentInfo"><code class="name flex">
+<span>def <span class="ident">updateAppointmentInfo</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates Appointment information in the database.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated Appointment information.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateAppointmentInfo(data):
+    &#34;&#34;&#34;
+    Updates Appointment information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Appointment information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+
+        mysql_update_query = &#34;&#34;&#34;UPDATE appointment set  doctorid = %s, hospitalid = %s, date = %s, timeslot = %s, isactive = %s, lastmoddate = %s WHERE appointmentid = %s &#34;&#34;&#34;
+
+        input_data = ( int(data[&#39;doctorid&#39;]), int(data[&#39;hospitalid&#39;]), str(
+            data[&#39;date&#39;]), str(data[&#39;timeslot&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;appointmentid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into appointment table&#34;)
+        msg = &#34;Record updated successfully into appointment table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateHospitalInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateDoctorInfo"><code class="name flex">
+<span>def <span class="ident">updateDoctorInfo</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates doctor information in the database.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated Doctor information.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateDoctorInfo(data):
+    &#34;&#34;&#34;
+    Updates doctor information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Doctor information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+        mysql_update_query = &#34;&#34;&#34;UPDATE doctors set firstname = %s, lastname = %s, primaryspecialty = %s, secondaryspecialty = %s, type = %s, degree = %s, phone = %s, email = %s, gender = %s, yoe = %s, approvalstatus = %s, isactive = %s, lastmoddate = %s WHERE doctorid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;firstname&#39;]), str(data[&#39;lastname&#39;]), str(data[&#39;primaryspecialty&#39;]), str(data[&#39;secondaryspecialty&#39;]), str(data[&#39;type&#39;]), str(data[&#39;degree&#39;]), str(
+            data[&#39;phone&#39;]), str(data[&#39;email&#39;]), str(data[&#39;gender&#39;]), str(data[&#39;yoe&#39;]), str(data[&#39;approvalstatus&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;doctorid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into doctors table&#34;)
+        msg = &#34;Record updated successfully into doctors table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateDoctorInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateDoctorStatus"><code class="name flex">
+<span>def <span class="ident">updateDoctorStatus</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Admin sets doctors status to TRUE.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Contains doctorid which is needed to change the status.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateDoctorStatus(data):
+    &#34;&#34;&#34;
+    Admin sets doctors status to TRUE.
+    Parameters
+    ----------
+    data : json
+        Contains doctorid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE doctors set approvalstatus = %s, lastmoddate = %s, comments = %s where doctorid = %s&#34;
+        inputData = (&#34;TRUE&#34;,
+                     formattedDate, str(data[&#34;comments&#34;]), int(data[&#39;id&#39;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Approved&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into doctors table {}&#34;.format(error))
+        msg = &#34;Failed to update into doctors table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into doctors table {}&#34;.format(e))
+        msg = &#34;Failed to update into doctors table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateHospitalInfo"><code class="name flex">
+<span>def <span class="ident">updateHospitalInfo</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates hospital information in the database.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated Hospital information.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateHospitalInfo(data):
+    &#34;&#34;&#34;
+    Updates hospital information in the database.
+
+    Parameters
+    ----------
+    data : json
+        Updated Hospital information.
+
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        lastmoddate = str(datetime.datetime.today()).split()[0]
+        cursor = connection.cursor(dictionary=True)
+
+        mysql_update_query = &#34;&#34;&#34;UPDATE hospitals set name = %s, type = %s, addressline1 = %s, addressline2 = %s, city = %s, state = %s, country = %s, zipcode = %s, phone = %s, email = %s, approvalstatus = %s, isactive = %s, lastmoddate = %s  WHERE hospitalid = %s &#34;&#34;&#34;
+
+        input_data = (str(data[&#39;name&#39;]), str(data[&#39;type&#39;]), str(data[&#39;addressline1&#39;]), str(data[&#39;addressline2&#39;]), str(data[&#39;city&#39;]), str(data[&#39;state&#39;]), str(
+            data[&#39;country&#39;]), str(data[&#39;zipcode&#39;]), str(data[&#39;phone&#39;]), str(data[&#39;email&#39;]), str(data[&#39;approvalstatus&#39;]), str(data[&#39;isactive&#39;]), lastmoddate, int(data[&#39;hospitalid&#39;]))
+
+        cursor.execute(mysql_update_query, input_data)
+        connection.commit()
+
+        print(&#34;Record updated successfully into hospitals table&#34;)
+        msg = &#34;Record updated successfully into hospitals table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateHospitalInfo: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateHospitalStatus"><code class="name flex">
+<span>def <span class="ident">updateHospitalStatus</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Admin sets hospital status to TRUE.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Contains hospitalid which is needed to change the status.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateHospitalStatus(data):
+    &#34;&#34;&#34;
+    Admin sets hospital status to TRUE.
+    Parameters
+    ----------
+    data : json
+        Contains hospitalid which is needed to change the status.
+    Returns
+    ----------
+    tuple
+        Returns a tuple which contains a bool(checking database staus) and a message for the approval of the status.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        mysqlUpdateQuery = &#34;UPDATE hospitals set approvalstatus = %s, lastmoddate = %s, comments = %s where hospitalid = %s&#34;
+        inputData = (&#34;TRUE&#34;,
+                     formattedDate, str(
+                         data[&#39;comments&#39;]), int(data[&#39;id&#39;]))
+        cursor.execute(mysqlUpdateQuery, inputData)
+        connection.commit()
+        msg = &#34;Status Approved&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(error))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;Failed to update into hospitals table {}&#34;.format(e))
+        msg = &#34;Failed to update into hospitals table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+<dt id="backend.utils.updateUserProfile"><code class="name flex">
+<span>def <span class="ident">updateUserProfile</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates an user in the database.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated user information.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateUserProfile(data):
+    &#34;&#34;&#34;
+    Updates an user in the database.
+    Parameters
+    ----------
+    data : json
+        Updated user information.
+    Returns
+    ----------
+    tuple
+        Returns a tuple with two elements. The first element(a boolean variable) checks to see if the database operations worked correctly. The second element is a message about the same.
+    &#34;&#34;&#34;
+
+    try:
+        connection = db_connection()
+        now = datetime.datetime.now()
+        formattedDate = now.strftime(&#34;%Y%m%d&#34;)
+        cursor = connection.cursor(dictionary=True)
+        sqlUpdateQuery = &#34;UPDATE users set username = %s, email = %s, firstname = %s, lastname = %s, gender = %s, password = %s, phone = %s, isactive = %s, lastmoddate = %s WHERE userid = %s&#34;
+        inputData = (str(data[&#39;username&#39;]), str(data[&#39;email&#39;]),
+                     str(data[&#34;firstname&#34;]), str(data[&#34;lastname&#34;]), str(data[&#34;gender&#34;]), str(
+            data[&#34;password&#34;]), str(data[&#34;phone&#34;]), str(data[&#34;isactive&#34;]), formattedDate, int(data[&#34;userid&#34;]))
+        cursor.execute(sqlUpdateQuery, inputData)
+        connection.commit()
+
+        print(&#34;Record updated successfully into users table&#34;)
+        msg = &#34;Record updated successfully into users table&#34;
+        cursor.close()
+        connection.close()
+        return True, msg
+
+    except mysql.connector.Error as error:
+        print(&#34;Failed to update table {}&#34;.format(error))
+        msg = &#34;Failed to update table {}&#34;.format(error)
+        return False, msg
+
+    except Exception as e:
+        print(&#34;some error occurred in updateUserProfile: {}&#34;.format(e))
+        msg = &#34;Failed to update table {}&#34;.format(e)
+        return False, msg</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="backend" href="index.html">backend</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="backend.utils.addAffiliation" href="#backend.utils.addAffiliation">addAffiliation</a></code></li>
+<li><code><a title="backend.utils.addAppointment" href="#backend.utils.addAppointment">addAppointment</a></code></li>
+<li><code><a title="backend.utils.addDoctor" href="#backend.utils.addDoctor">addDoctor</a></code></li>
+<li><code><a title="backend.utils.addHospital" href="#backend.utils.addHospital">addHospital</a></code></li>
+<li><code><a title="backend.utils.addUser" href="#backend.utils.addUser">addUser</a></code></li>
+<li><code><a title="backend.utils.checkDuplicateEmail" href="#backend.utils.checkDuplicateEmail">checkDuplicateEmail</a></code></li>
+<li><code><a title="backend.utils.db_connection" href="#backend.utils.db_connection">db_connection</a></code></li>
+<li><code><a title="backend.utils.denyDoctor" href="#backend.utils.denyDoctor">denyDoctor</a></code></li>
+<li><code><a title="backend.utils.denyHospital" href="#backend.utils.denyHospital">denyHospital</a></code></li>
+<li><code><a title="backend.utils.getAfiiliationByDoctor" href="#backend.utils.getAfiiliationByDoctor">getAfiiliationByDoctor</a></code></li>
+<li><code><a title="backend.utils.getAfiiliationByHospital" href="#backend.utils.getAfiiliationByHospital">getAfiiliationByHospital</a></code></li>
+<li><code><a title="backend.utils.getAppointmentInfoDoctorDB" href="#backend.utils.getAppointmentInfoDoctorDB">getAppointmentInfoDoctorDB</a></code></li>
+<li><code><a title="backend.utils.getAppointmentInfoUserDB" href="#backend.utils.getAppointmentInfoUserDB">getAppointmentInfoUserDB</a></code></li>
+<li><code><a title="backend.utils.getDoctorDetails" href="#backend.utils.getDoctorDetails">getDoctorDetails</a></code></li>
+<li><code><a title="backend.utils.getDoctorDetailsByUserID" href="#backend.utils.getDoctorDetailsByUserID">getDoctorDetailsByUserID</a></code></li>
+<li><code><a title="backend.utils.getDoctorSearch" href="#backend.utils.getDoctorSearch">getDoctorSearch</a></code></li>
+<li><code><a title="backend.utils.getDoctors" href="#backend.utils.getDoctors">getDoctors</a></code></li>
+<li><code><a title="backend.utils.getHospitalDetails" href="#backend.utils.getHospitalDetails">getHospitalDetails</a></code></li>
+<li><code><a title="backend.utils.getHospitalSearch" href="#backend.utils.getHospitalSearch">getHospitalSearch</a></code></li>
+<li><code><a title="backend.utils.getHospitals" href="#backend.utils.getHospitals">getHospitals</a></code></li>
+<li><code><a title="backend.utils.getUnapprovedDoctors" href="#backend.utils.getUnapprovedDoctors">getUnapprovedDoctors</a></code></li>
+<li><code><a title="backend.utils.getUnapprovedHospitals" href="#backend.utils.getUnapprovedHospitals">getUnapprovedHospitals</a></code></li>
+<li><code><a title="backend.utils.getUserProfileByEmail" href="#backend.utils.getUserProfileByEmail">getUserProfileByEmail</a></code></li>
+<li><code><a title="backend.utils.getUserProfileByID" href="#backend.utils.getUserProfileByID">getUserProfileByID</a></code></li>
+<li><code><a title="backend.utils.loginCheck" href="#backend.utils.loginCheck">loginCheck</a></code></li>
+<li><code><a title="backend.utils.removeUser" href="#backend.utils.removeUser">removeUser</a></code></li>
+<li><code><a title="backend.utils.updateAffiliation" href="#backend.utils.updateAffiliation">updateAffiliation</a></code></li>
+<li><code><a title="backend.utils.updateAppointmentInfo" href="#backend.utils.updateAppointmentInfo">updateAppointmentInfo</a></code></li>
+<li><code><a title="backend.utils.updateDoctorInfo" href="#backend.utils.updateDoctorInfo">updateDoctorInfo</a></code></li>
+<li><code><a title="backend.utils.updateDoctorStatus" href="#backend.utils.updateDoctorStatus">updateDoctorStatus</a></code></li>
+<li><code><a title="backend.utils.updateHospitalInfo" href="#backend.utils.updateHospitalInfo">updateHospitalInfo</a></code></li>
+<li><code><a title="backend.utils.updateHospitalStatus" href="#backend.utils.updateHospitalStatus">updateHospitalStatus</a></code></li>
+<li><code><a title="backend.utils.updateUserProfile" href="#backend.utils.updateUserProfile">updateUserProfile</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

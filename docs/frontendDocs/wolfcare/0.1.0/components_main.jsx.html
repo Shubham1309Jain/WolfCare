@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/main.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/main.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import { Button } from 'antd';
+
+/**
+ * React component for main page on Home
+ * @extends React.Component
+ */
+class MainPage extends React.Component {
+	/**
+	 * Set initial state
+	 * @param {Object} props Props for the component
+	 */
+	constructor (props) {
+		super(props);
+		this.redirectToPath = props.redirectToPath;
+		this.setRegisterClicked = props.setRegisterClicked;
+		this.userType = props.userType;
+	}
+
+	/**
+	 * Render main component on Homepage
+	 * @returns {React.Component} Form with register user related HTML tags
+	 */
+	render() {
+		return (
+			&lt;div style={ { marginTop: '0em', height: '650px', backgroundColor: 'black' } }>
+				&lt;Carousel
+					slide={ true }
+					indicators={ false }
+					interval={ 1500 }
+					pause={ 'hover' }
+					keyboard={ true }
+					prevIcon={ &lt;span aria-hidden='true' className='carousel-control-prev-icon' style={ { marginLeft: '-10em' } } /> }
+					nextIcon={ &lt;span aria-hidden='true' className='carousel-control-next-icon' style={ { marginLeft: '10em' } } /> }
+				>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider4.jpg' alt='first-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '45%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '50%', marginTop: '8%', marginLeft: '3%', paddingLeft: '5%', float: 'left' } }>&lt;img src='../appointment.jpg' alt='appointment' style={ { height: '200px', marginLeft: '10px', float: 'left' } } />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', float: 'right' } }>Book an appointment anytime, anywhere&lt;/h2>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '10%' } } onClick={ () => this.redirectToPath('/home/doctors') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Book appointment&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider5.jpeg' alt='second-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '45%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '50%', marginTop: '8%', marginLeft: '3%', float: 'left' } }>&lt;img src='../doc2.jpg' alt='doc2' />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', float: 'right' } }>Looking for a doctor?&lt;/h2>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '15%' } } onClick={ () => this.redirectToPath('/home/doctors') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Find doctor&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider6.jpg' alt='third-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '45%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '50%', marginTop: '8%', marginLeft: '3%', float: 'left' } }>&lt;img src='../hospital1.jpg' alt='hospital1' />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', float: 'right' } }>Looking for a hospital?&lt;/h2>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '15%' } } onClick={ () => this.redirectToPath('/home/hospitals') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Find hospital&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider7.jpg' alt='fourth-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '45%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '50%', marginTop: '10%', marginLeft: '3%', paddingLeft: '5%', float: 'left' } }>&lt;img src='../symptoms.jpg' alt='symptoms' style={ { height: '200px', marginLeft: '10px', float: 'left' } } />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', float: 'right' } }>Not feeling well? Match symptoms.&lt;/h2>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '12%' } } onClick={ () => this.redirectToPath('/home/symptoms') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Check symptoms&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider1.jpg' alt='fifth-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '25%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '40%', marginTop: '8%', marginLeft: '3%', float: 'left' } }>&lt;img src='../doc1.jpg' alt='doc1' style={ { width: '180px', height: '180px' } } />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', float: 'right' } }>Are you a Doctor?&lt;/h2>
+									&lt;h1 style={ { width: '43%', marginRight: '5%', float: 'right' } }>&lt;b>Join our team&lt;/b>&lt;/h1>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '20%' } } onClick={ () => this.setRegisterClicked(true, 'doctor') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Join as Doctor&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+					&lt;Carousel.Item style={ { height: '650px' } }>
+						&lt;div>
+							&lt;img src='../slider3.jpg' alt='sixth-slider' style={ { width: '100%', height: '650px', opacity: '40%' } }>&lt;/img>
+							&lt;div className='container' style={ { position: 'absolute', width: '45%', height: '50%', top: '25%', right: '25%', opacity: '90%' } }>
+								&lt;div>
+									&lt;figure style={ { width: '40%', marginTop: '8%', marginLeft: '3%', float: 'left' } }>&lt;img src='../hospital.jpg' alt='sign in' />&lt;/figure>
+									&lt;h2 style={ { width: '43%', marginTop: '15%', marginRight: '5%', float: 'right' } }>Represent a hospital?&lt;/h2>
+									&lt;h1 style={ { width: '43%', marginRight: '5%', float: 'right' } }>&lt;b>Join our team&lt;/b>&lt;/h1>
+									&lt;Button shape='round' type='primary' size='small' style={ { height: '40px', position: 'relative', marginTop: '2%', marginLeft: '20%' } } onClick={ () => this.setRegisterClicked(true, 'hospital') }>&lt;p style={ { float: 'left', marginTop: '0.5em' } }>Add hospital&lt;/p>&lt;/Button>
+								&lt;/div>
+							&lt;/div>
+						&lt;/div>
+					&lt;/Carousel.Item>
+				&lt;/Carousel>
+			&lt;/div>
+		);
+	}
+}
+
+export default MainPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-axiosClient.html">axiosClient</a></li><li><a href="module-combineReducers.html">combineReducers</a></li><li><a href="module-deleteAppointmentApi.html">deleteAppointmentApi</a></li><li><a href="module-getAppointmentsForDoctor.html">getAppointmentsForDoctor</a></li><li><a href="module-getAppointmentsForUser.html">getAppointmentsForUser</a></li><li><a href="module-getDoctorAffiliatedHospitalsApi.html">getDoctorAffiliatedHospitalsApi</a></li><li><a href="module-getDoctorRequests.html">getDoctorRequests</a></li><li><a href="module-getDoctorsApi.html">getDoctorsApi</a></li><li><a href="module-getHospitalRequests.html">getHospitalRequests</a></li><li><a href="module-getHospitalsApi.html">getHospitalsApi</a></li><li><a href="module-getProfleAPI.html">getProfleAPI</a></li><li><a href="module-homeContainer.html">homeContainer</a></li><li><a href="module-homeReducer.html">homeReducer</a></li><li><a href="module-loginApi.html">loginApi</a></li><li><a href="module-registerUserApi.html">registerUserApi</a></li><li><a href="module-reviewDoctorRequests.html">reviewDoctorRequests</a></li><li><a href="module-reviewHospitalRequests.html">reviewHospitalRequests</a></li><li><a href="module-scheduleAppointmentApi.html">scheduleAppointmentApi</a></li><li><a href="module-updateAppointmentApi.html">updateAppointmentApi</a></li><li><a href="module-updateProfileAPI.html">updateProfileAPI</a></li></ul><h3>Classes</h3><ul><li><a href="AboutUs.html">AboutUs</a></li><li><a href="AdminRequests.html">AdminRequests</a></li><li><a href="AppointmentsList.html">AppointmentsList</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="DescribeAppointment.html">DescribeAppointment</a></li><li><a href="DoctorsList.html">DoctorsList</a></li><li><a href="Home.html">Home</a></li><li><a href="HospitalsList.html">HospitalsList</a></li><li><a href="LoginUser.html">LoginUser</a></li><li><a href="MainPage.html">MainPage</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="RegisterUser.html">RegisterUser</a></li><li><a href="SymptomsChecker.html">SymptomsChecker</a></li><li><a href="Wolfcare.html">Wolfcare</a></li></ul><h3>Global</h3><ul><li><a href="global.html#filterDropdown">filterDropdown</a></li><li><a href="global.html#filterIcon">filterIcon</a></li><li><a href="global.html#onFilter">onFilter</a></li><li><a href="global.html#onFilterDropdownOpenChange">onFilterDropdownOpenChange</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Mon Dec 05 2022 20:02:27 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

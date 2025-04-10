@@ -1,0 +1,2495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>backend.app API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>backend.app</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#from werkzeug.exceptions import HTTPException
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import json
+from src.backend.utils import *
+
+# Flask application configuration
+app = Flask(__name__)
+CORS(app)
+
+
+@app.route(&#39;/&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;, &#39;OPTIONS&#39;])
+def empty():
+    &#34;&#34;&#34;
+    Empty function which sends a json when we start the application.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;Backend working&#34;})
+
+
+@app.route(&#39;/addDoctor&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addDoctor():
+    &#34;&#34;&#34;
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about the Doctor getting added.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        firstname = data[&#39;firstname&#39;]
+        lastname = data[&#39;lastname&#39;]
+        primaryspecialty = data[&#39;primaryspecialty&#39;]
+        secondaryspecialty = data[&#39;secondaryspecialty&#39;]
+        type = data[&#39;type&#39;]
+        degree = data[&#39;degree&#39;]
+        phone = data[&#39;phone&#39;]
+        email = data[&#39;email&#39;]
+        gender = data[&#39;gender&#39;]
+        yoe = data[&#39;yoe&#39;]
+        userid = data[&#39;userid&#39;]
+        status, msg = addDoctor(firstname, lastname, primaryspecialty, secondaryspecialty,
+                                type, degree, phone, email, gender, yoe, userid)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/updateDoctor&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateDoctor():
+    &#34;&#34;&#34;
+    Updating doctor info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated doctor info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateDoctorInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getDoctorInfo&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctorInfo():
+    &#34;&#34;&#34;
+    Gets information of the doctor based on the id.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID doctor id.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getDoctorDetails(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getDoctors&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctors():
+    &#34;&#34;&#34;
+    Gets information of all the active doctors\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        status, data = getDoctors()
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/addHospital&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addHospital():
+    &#34;&#34;&#34;
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about the Hospital getting added.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        name = data[&#39;name&#39;]
+        type = data[&#39;type&#39;]
+        addressline1 = data[&#39;addressline1&#39;]
+        addressline2 = data[&#39;addressline2&#39;]
+        city = data[&#39;city&#39;]
+        state = data[&#39;state&#39;]
+        country = data[&#39;country&#39;]
+        zipcode = data[&#39;zipcode&#39;]
+        phone = data[&#39;phone&#39;]
+        email = data[&#39;email&#39;]
+
+        status, msg = addHospital(name, type, addressline1, addressline2, city,
+                                  state, country, zipcode, phone, email)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/updateHospital&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateHospital():
+    &#34;&#34;&#34;
+    Updating Hospital info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated doctor info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateHospitalInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getHospitalInfo&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitalInfo():
+    &#34;&#34;&#34;
+    Gets information of the hospital based on the id.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID hospital id.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getHospitalDetails(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getHospitals&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitals():
+    &#34;&#34;&#34;
+    Gets information of all the hospitals.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        status, data = getHospitals()
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/addAffiliation&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addAffiliation():
+    &#34;&#34;&#34;
+    Affiliation is created between an existing doctor and hospital\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Information about the affiliation which is getting created.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        doctorid = data[&#39;doctorid&#39;]
+        hospitalid = data[&#39;hospitalid&#39;]
+        appointmentschedule = data[&#39;appointmentschedule&#39;]
+        status, msg = addAffiliation(doctorid, hospitalid, appointmentschedule)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/addAppointment&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addAppointment():
+    &#34;&#34;&#34;
+    Appoitnment is created for a user with a doctor in a hospital on a particular date and timeslot\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Information about the appointment which is getting created.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        userid = data[&#39;userid&#39;]
+        doctorid = data[&#39;doctorid&#39;]
+        hospitalid = data[&#39;hospitalid&#39;]
+        date = data[&#39;date&#39;]
+        timeslot = data[&#39;timeslot&#39;]
+        status, msg = addAppointment(
+            userid, doctorid, hospitalid, date, timeslot)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/updateAppointment&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateAppointment():
+    &#34;&#34;&#34;
+    Updating Appointment info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated appointment info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateAppointmentInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/updateAffiliation&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateAffiliation():
+    &#34;&#34;&#34;
+    Updating an affiliation already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Updated appointment schedule or isactive status
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateAffiliation(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getAfiiliationByDoctor&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getAfiiliationByDoctor():
+    &#34;&#34;&#34;
+    Gets information for all the hospitals affiliated to a doctor.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        ID doctor id.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getAfiiliationByDoctor(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/getAfiiliationByHospital&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getAfiiliationByHospital():
+    &#34;&#34;&#34;
+    Gets information for all the doctors affiliated to a hospital.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        ID hospital id.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getAfiiliationByHospital(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+# getDoctorSearch
+
+
+@app.route(&#39;/getDoctorSearch&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctorSearch():
+    &#34;&#34;&#34;
+    Gives back all doctors that match keyword as firstname, lastname, primaryspecialty or secondaryspecialty.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        Keyword to search doctor.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        keyword = request.args.get(&#39;keyword&#39;)
+        status, data = getDoctorSearch(keyword)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+# getHospitalSearch
+
+
+@app.route(&#39;/getHospitalSearch&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitalSearch():
+    &#34;&#34;&#34;
+    Gives back all hospitals that match keyword as name or address.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        Keyword to search hospital.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        keyword = request.args.get(&#39;keyword&#39;)
+        status, data = getHospitalSearch(keyword)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/approvehospital&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def approveHospitals():
+    &#34;&#34;&#34;
+    Admin approving a hospital.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about hospital that is getting approved, if it is a put request.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+        if (data[&#34;status&#34;] == &#34;Approved&#34;):
+            status, msg = updateHospitalStatus(data)
+
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        elif (data[&#34;status&#34;] == &#34;Denied&#34;):
+            status, msg = denyHospital(data)
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    elif request.method == &#39;GET&#39;:
+        status, unapprovedHospital = getUnapprovedHospitals()
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: unapprovedHospital, &#34;message&#34;: &#34;Unapproved Hospitals&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: unapprovedHospital})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/approvedoctors&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def approveDoctors():
+    &#34;&#34;&#34;
+    Admin approving a doctor.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about doctor who is getting approved, if it is a put request.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+        if (data[&#34;status&#34;] == &#34;Approved&#34;):
+            status, msg = updateDoctorStatus(data)
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        elif (data[&#34;status&#34;] == &#34;Denied&#34;):
+            status, msg = denyDoctor(data)
+            if status:
+                status, msg = removeUser(int(data[&#34;id&#34;]))
+                if status:
+                    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+                else:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    elif request.method == &#39;GET&#39;:
+        status, unapprovedDoctors = getUnapprovedDoctors()
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: unapprovedDoctors, &#34;message&#34;: &#34;Unnapproved Doctors&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: unapprovedDoctors})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/register&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;])
+def register():
+    &#34;&#34;&#34;
+    Register a user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about user who is registering.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        email = data[&#39;email&#39;]
+        usertype = data[&#39;userType&#39;]
+
+        if usertype == &#39;patient&#39;:
+            check, status = checkDuplicateEmail(email)
+
+            if (status == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+            if (check):
+                return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Please fill out the form again! The Email is taken/or is written in the wrong format&#34;})
+
+            check = addUser(data)
+            if (check):
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while adding an user&#34;})
+
+        elif usertype == &#39;hospital&#39;:
+            status, msg = addHospital(
+                data[&#39;name&#39;], data[&#39;address&#39;], data[&#39;phoneNumber&#39;], data[&#39;email&#39;])
+
+            if status == False:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully as Hospital&#34;})
+
+        elif usertype == &#39;doctor&#39;:
+            check, status = checkDuplicateEmail(email)
+
+            if (status == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+            if (check):
+                return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Please fill out the form again! The Email is taken/or is written in the wrong format&#34;})
+
+            check = addUser(data)
+
+            if (check):
+
+                userid = getUserProfileByEmail(email)
+                if userid == []:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+                else:
+                    userid = userid[&#34;userid&#34;]
+
+                    status, msg = addDoctor(
+                        data[&#34;name&#34;], data[&#34;specialization&#34;], data[&#34;phoneNumber&#34;], data[&#34;email&#34;], data[&#34;experience&#34;], userid)
+
+                    if status == False:
+                        return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully as a Doctor:)&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while adding an user&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/login&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;])
+def login():
+    &#34;&#34;&#34;
+    User login.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about user who is logging in.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains logged in user&#39;s information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+
+        data = json.loads(request.data)
+        email = data[&#39;email&#39;]
+        password = data[&#39;password&#39;]
+
+        userInfo, status = loginCheck(email, password)
+        if (status == 0):
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Database Error&#34;})
+
+        if (len(userInfo) &gt; 0):
+            newDict = {}
+            newDict[&#34;doctor&#34;] = {}
+
+            userid = userInfo[&#34;userid&#34;]
+            newDict[&#34;user&#34;] = userInfo
+
+            if userInfo[&#34;usertype&#34;] == &#34;doctor&#34;:
+                status, data = getDoctorDetailsByUserID(userid)
+
+                if status == True:
+                    newDict[&#34;doctor&#34;] = data[0]
+
+                else:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: newDict, &#34;message&#34;: &#34;Logged in Succesfully&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Incorrect email/Password&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/profile&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def getProfile():
+    &#34;&#34;&#34;
+    Gets the profile of the current user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID of the user who is logged in.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains user&#39;s information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#34;GET&#34;:
+        id = request.args.get(&#39;id&#39;)
+        print(id)
+        if (id):
+            userInfo = getUserProfileByID(id)
+            if (len(userInfo) == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Database Error&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: userInfo, &#34;message&#34;: &#34;Profile gotten succesfully&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/updateprofile&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def updateprofile():
+    &#34;&#34;&#34;
+    Updates the profile of the current user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateUserProfile(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/appointmentInfoUser&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def getAppointmentInfoUser():
+    &#34;&#34;&#34;
+    Gets Appointment for User.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if (request.method == &#34;GET&#34;):
+        id = request.args.get(&#39;id&#39;)
+        if (id):
+            status, appointmentInfos = getAppointmentInfoUserDB(id)
+
+            if (status == False):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: appointmentInfos})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: appointmentInfos, &#34;message&#34;: &#34;Retrieved Appointments&#34;})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+@app.route(&#39;/appointmentInfoDoctor&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def getAppointmentInfoDoctor():
+    &#34;&#34;&#34;
+    Gets Appointment Info for doctor\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if (request.method == &#34;GET&#34;):
+        id = request.args.get(&#39;id&#39;)
+        if (id):
+            status, appointmentInfos = getAppointmentInfoDoctorDB(id)
+
+            if (status == False):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: appointmentInfos})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: appointmentInfos, &#34;message&#34;: &#34;Retrieved Appointments&#34;})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})
+
+
+if __name__ == &#39;__main__&#39;:
+    app.run(debug=True, host=&#39;localhost&#39;, port=5001)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="backend.app.app_addAffiliation"><code class="name flex">
+<span>def <span class="ident">app_addAffiliation</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Affiliation is created between an existing doctor and hospital</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about the affiliation which is getting created.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/addAffiliation&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addAffiliation():
+    &#34;&#34;&#34;
+    Affiliation is created between an existing doctor and hospital\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Information about the affiliation which is getting created.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        doctorid = data[&#39;doctorid&#39;]
+        hospitalid = data[&#39;hospitalid&#39;]
+        appointmentschedule = data[&#39;appointmentschedule&#39;]
+        status, msg = addAffiliation(doctorid, hospitalid, appointmentschedule)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_addAppointment"><code class="name flex">
+<span>def <span class="ident">app_addAppointment</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appoitnment is created for a user with a doctor in a hospital on a particular date and timeslot</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about the appointment which is getting created.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/addAppointment&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addAppointment():
+    &#34;&#34;&#34;
+    Appoitnment is created for a user with a doctor in a hospital on a particular date and timeslot\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Information about the appointment which is getting created.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        userid = data[&#39;userid&#39;]
+        doctorid = data[&#39;doctorid&#39;]
+        hospitalid = data[&#39;hospitalid&#39;]
+        date = data[&#39;date&#39;]
+        timeslot = data[&#39;timeslot&#39;]
+        status, msg = addAppointment(
+            userid, doctorid, hospitalid, date, timeslot)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_addDoctor"><code class="name flex">
+<span>def <span class="ident">app_addDoctor</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about the Doctor getting added.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/addDoctor&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addDoctor():
+    &#34;&#34;&#34;
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about the Doctor getting added.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        firstname = data[&#39;firstname&#39;]
+        lastname = data[&#39;lastname&#39;]
+        primaryspecialty = data[&#39;primaryspecialty&#39;]
+        secondaryspecialty = data[&#39;secondaryspecialty&#39;]
+        type = data[&#39;type&#39;]
+        degree = data[&#39;degree&#39;]
+        phone = data[&#39;phone&#39;]
+        email = data[&#39;email&#39;]
+        gender = data[&#39;gender&#39;]
+        yoe = data[&#39;yoe&#39;]
+        userid = data[&#39;userid&#39;]
+        status, msg = addDoctor(firstname, lastname, primaryspecialty, secondaryspecialty,
+                                type, degree, phone, email, gender, yoe, userid)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_addHospital"><code class="name flex">
+<span>def <span class="ident">app_addHospital</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about the Hospital getting added.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/addHospital&#39;, methods=[&#39;POST&#39;, &#39;OPTIONS&#39;])
+def app_addHospital():
+    &#34;&#34;&#34;
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about the Hospital getting added.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        name = data[&#39;name&#39;]
+        type = data[&#39;type&#39;]
+        addressline1 = data[&#39;addressline1&#39;]
+        addressline2 = data[&#39;addressline2&#39;]
+        city = data[&#39;city&#39;]
+        state = data[&#39;state&#39;]
+        country = data[&#39;country&#39;]
+        zipcode = data[&#39;zipcode&#39;]
+        phone = data[&#39;phone&#39;]
+        email = data[&#39;email&#39;]
+
+        status, msg = addHospital(name, type, addressline1, addressline2, city,
+                                  state, country, zipcode, phone, email)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getAfiiliationByDoctor"><code class="name flex">
+<span>def <span class="ident">app_getAfiiliationByDoctor</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information for all the hospitals affiliated to a doctor.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID doctor id.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getAfiiliationByDoctor&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getAfiiliationByDoctor():
+    &#34;&#34;&#34;
+    Gets information for all the hospitals affiliated to a doctor.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        ID doctor id.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getAfiiliationByDoctor(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getAfiiliationByHospital"><code class="name flex">
+<span>def <span class="ident">app_getAfiiliationByHospital</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information for all the doctors affiliated to a hospital.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID hospital id.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getAfiiliationByHospital&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getAfiiliationByHospital():
+    &#34;&#34;&#34;
+    Gets information for all the doctors affiliated to a hospital.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        ID hospital id.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getAfiiliationByHospital(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getDoctorInfo"><code class="name flex">
+<span>def <span class="ident">app_getDoctorInfo</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information of the doctor based on the id.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID doctor id.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getDoctorInfo&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctorInfo():
+    &#34;&#34;&#34;
+    Gets information of the doctor based on the id.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID doctor id.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getDoctorDetails(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getDoctorSearch"><code class="name flex">
+<span>def <span class="ident">app_getDoctorSearch</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives back all doctors that match keyword as firstname, lastname, primaryspecialty or secondaryspecialty.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Keyword to search doctor.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getDoctorSearch&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctorSearch():
+    &#34;&#34;&#34;
+    Gives back all doctors that match keyword as firstname, lastname, primaryspecialty or secondaryspecialty.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        Keyword to search doctor.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        keyword = request.args.get(&#39;keyword&#39;)
+        status, data = getDoctorSearch(keyword)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getDoctors"><code class="name flex">
+<span>def <span class="ident">app_getDoctors</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information of all the active doctors</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getDoctors&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getDoctors():
+    &#34;&#34;&#34;
+    Gets information of all the active doctors\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        status, data = getDoctors()
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getHospitalInfo"><code class="name flex">
+<span>def <span class="ident">app_getHospitalInfo</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information of the hospital based on the id.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID hospital id.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getHospitalInfo&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitalInfo():
+    &#34;&#34;&#34;
+    Gets information of the hospital based on the id.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID hospital id.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        id = request.args.get(&#39;id&#39;)
+        status, data = getHospitalDetails(id)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getHospitalSearch"><code class="name flex">
+<span>def <span class="ident">app_getHospitalSearch</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives back all hospitals that match keyword as name or address.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Keyword to search hospital.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getHospitalSearch&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitalSearch():
+    &#34;&#34;&#34;
+    Gives back all hospitals that match keyword as name or address.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    id : int
+        Keyword to search hospital.
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        keyword = request.args.get(&#39;keyword&#39;)
+        status, data = getHospitalSearch(keyword)
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_getHospitals"><code class="name flex">
+<span>def <span class="ident">app_getHospitals</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets information of all the hospitals.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains the information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/getHospitals&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def app_getHospitals():
+    &#34;&#34;&#34;
+    Gets information of all the hospitals.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains the information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;GET&#39;:
+
+        status, data = getHospitals()
+        if status:
+            if data == []:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;No records found&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: data, &#34;message&#34;: &#34;Records found&#34;})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: data})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_updateAffiliation"><code class="name flex">
+<span>def <span class="ident">app_updateAffiliation</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updating an affiliation already exisiting.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated appointment schedule or isactive status</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/updateAffiliation&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateAffiliation():
+    &#34;&#34;&#34;
+    Updating an affiliation already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+
+    Parameters
+    ----------
+    data : json
+        Updated appointment schedule or isactive status
+
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateAffiliation(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_updateAppointment"><code class="name flex">
+<span>def <span class="ident">app_updateAppointment</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updating Appointment info already exisiting.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated appointment info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/updateAppointment&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateAppointment():
+    &#34;&#34;&#34;
+    Updating Appointment info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated appointment info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateAppointmentInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_updateDoctor"><code class="name flex">
+<span>def <span class="ident">app_updateDoctor</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updating doctor info already exisiting.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated doctor info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/updateDoctor&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateDoctor():
+    &#34;&#34;&#34;
+    Updating doctor info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated doctor info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateDoctorInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.app_updateHospital"><code class="name flex">
+<span>def <span class="ident">app_updateHospital</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updating Hospital info already exisiting.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated doctor info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/updateHospital&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;])
+def app_updateHospital():
+    &#34;&#34;&#34;
+    Updating Hospital info already exisiting.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated doctor info 
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateHospitalInfo(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.approveDoctors"><code class="name flex">
+<span>def <span class="ident">approveDoctors</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Admin approving a doctor.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about doctor who is getting approved, if it is a put request.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/approvedoctors&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def approveDoctors():
+    &#34;&#34;&#34;
+    Admin approving a doctor.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about doctor who is getting approved, if it is a put request.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+        if (data[&#34;status&#34;] == &#34;Approved&#34;):
+            status, msg = updateDoctorStatus(data)
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        elif (data[&#34;status&#34;] == &#34;Denied&#34;):
+            status, msg = denyDoctor(data)
+            if status:
+                status, msg = removeUser(int(data[&#34;id&#34;]))
+                if status:
+                    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+                else:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    elif request.method == &#39;GET&#39;:
+        status, unapprovedDoctors = getUnapprovedDoctors()
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: unapprovedDoctors, &#34;message&#34;: &#34;Unnapproved Doctors&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: unapprovedDoctors})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.approveHospitals"><code class="name flex">
+<span>def <span class="ident">approveHospitals</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Admin approving a hospital.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about hospital that is getting approved, if it is a put request.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/approvehospital&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def approveHospitals():
+    &#34;&#34;&#34;
+    Admin approving a hospital.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about hospital that is getting approved, if it is a put request.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+        if (data[&#34;status&#34;] == &#34;Approved&#34;):
+            status, msg = updateHospitalStatus(data)
+
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        elif (data[&#34;status&#34;] == &#34;Denied&#34;):
+            status, msg = denyHospital(data)
+            if status:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    elif request.method == &#39;GET&#39;:
+        status, unapprovedHospital = getUnapprovedHospitals()
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: unapprovedHospital, &#34;message&#34;: &#34;Unapproved Hospitals&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: unapprovedHospital})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.empty"><code class="name flex">
+<span>def <span class="ident">empty</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Empty function which sends a json when we start the application.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Returns</p>
+<hr>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;, &#39;OPTIONS&#39;])
+def empty():
+    &#34;&#34;&#34;
+    Empty function which sends a json when we start the application.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;Backend working&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.getAppointmentInfoDoctor"><code class="name flex">
+<span>def <span class="ident">getAppointmentInfoDoctor</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets Appointment Info for doctor</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated data of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/appointmentInfoDoctor&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def getAppointmentInfoDoctor():
+    &#34;&#34;&#34;
+    Gets Appointment Info for doctor\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if (request.method == &#34;GET&#34;):
+        id = request.args.get(&#39;id&#39;)
+        if (id):
+            status, appointmentInfos = getAppointmentInfoDoctorDB(id)
+
+            if (status == False):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: appointmentInfos})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: appointmentInfos, &#34;message&#34;: &#34;Retrieved Appointments&#34;})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.getAppointmentInfoUser"><code class="name flex">
+<span>def <span class="ident">getAppointmentInfoUser</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets Appointment for User.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated data of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/appointmentInfoUser&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def getAppointmentInfoUser():
+    &#34;&#34;&#34;
+    Gets Appointment for User.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+    if (request.method == &#34;GET&#34;):
+        id = request.args.get(&#39;id&#39;)
+        if (id):
+            status, appointmentInfos = getAppointmentInfoUserDB(id)
+
+            if (status == False):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: appointmentInfos})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: appointmentInfos, &#34;message&#34;: &#34;Retrieved Appointments&#34;})
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.getProfile"><code class="name flex">
+<span>def <span class="ident">getProfile</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the profile of the current user.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>ID of the user who is logged in.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains user's information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/profile&#39;, methods=[&#39;GET&#39;, &#39;OPTIONS&#39;])
+def getProfile():
+    &#34;&#34;&#34;
+    Gets the profile of the current user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    id : int
+        ID of the user who is logged in.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains user&#39;s information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#34;GET&#34;:
+        id = request.args.get(&#39;id&#39;)
+        print(id)
+        if (id):
+            userInfo = getUserProfileByID(id)
+            if (len(userInfo) == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Database Error&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: userInfo, &#34;message&#34;: &#34;Profile gotten succesfully&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.login"><code class="name flex">
+<span>def <span class="ident">login</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>User login.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about user who is logging in.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data which contains logged in user's information, message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/login&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;])
+def login():
+    &#34;&#34;&#34;
+    User login.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about user who is logging in.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data which contains logged in user&#39;s information, message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+
+        data = json.loads(request.data)
+        email = data[&#39;email&#39;]
+        password = data[&#39;password&#39;]
+
+        userInfo, status = loginCheck(email, password)
+        if (status == 0):
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Database Error&#34;})
+
+        if (len(userInfo) &gt; 0):
+            newDict = {}
+            newDict[&#34;doctor&#34;] = {}
+
+            userid = userInfo[&#34;userid&#34;]
+            newDict[&#34;user&#34;] = userInfo
+
+            if userInfo[&#34;usertype&#34;] == &#34;doctor&#34;:
+                status, data = getDoctorDetailsByUserID(userid)
+
+                if status == True:
+                    newDict[&#34;doctor&#34;] = data[0]
+
+                else:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: newDict, &#34;message&#34;: &#34;Logged in Succesfully&#34;})
+
+        else:
+            return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Incorrect email/Password&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.register"><code class="name flex">
+<span>def <span class="ident">register</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Register a user.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Information about user who is registering.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/register&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;])
+def register():
+    &#34;&#34;&#34;
+    Register a user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Information about user who is registering.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;POST&#39;:
+        data = json.loads(request.data)
+        email = data[&#39;email&#39;]
+        usertype = data[&#39;userType&#39;]
+
+        if usertype == &#39;patient&#39;:
+            check, status = checkDuplicateEmail(email)
+
+            if (status == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+            if (check):
+                return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Please fill out the form again! The Email is taken/or is written in the wrong format&#34;})
+
+            check = addUser(data)
+            if (check):
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while adding an user&#34;})
+
+        elif usertype == &#39;hospital&#39;:
+            status, msg = addHospital(
+                data[&#39;name&#39;], data[&#39;address&#39;], data[&#39;phoneNumber&#39;], data[&#39;email&#39;])
+
+            if status == False:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+            else:
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully as Hospital&#34;})
+
+        elif usertype == &#39;doctor&#39;:
+            check, status = checkDuplicateEmail(email)
+
+            if (status == 0):
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+            if (check):
+                return jsonify({&#34;status&#34;: 405, &#34;data&#34;: {}, &#34;message&#34;: &#34;Please fill out the form again! The Email is taken/or is written in the wrong format&#34;})
+
+            check = addUser(data)
+
+            if (check):
+
+                userid = getUserProfileByEmail(email)
+                if userid == []:
+                    return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while Accessing the database&#34;})
+                else:
+                    userid = userid[&#34;userid&#34;]
+
+                    status, msg = addDoctor(
+                        data[&#34;name&#34;], data[&#34;specialization&#34;], data[&#34;phoneNumber&#34;], data[&#34;email&#34;], data[&#34;experience&#34;], userid)
+
+                    if status == False:
+                        return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+                return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;You have registered succesfully as a Doctor:)&#34;})
+            else:
+                return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: &#34;Error while adding an user&#34;})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+<dt id="backend.app.updateprofile"><code class="name flex">
+<span>def <span class="ident">updateprofile</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the profile of the current user.</p>
+<p>Response is a json which contains:</p>
+<p>1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).</p>
+<p>2) Data - Associated data with the operation.</p>
+<p>3) Message - A message assoicated with the status.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>json</code></dt>
+<dd>Updated data of the user.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>json</code></dt>
+<dd>Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/updateprofile&#39;, methods=[&#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;GET&#39;])
+def updateprofile():
+    &#34;&#34;&#34;
+    Updates the profile of the current user.\n
+    Response is a json which contains:\n
+    1) Status - This can take 3 values = (200 : Perfect response, 405 : Database Error, 400 : Failure from client side ).\n
+    2) Data - Associated data with the operation.\n
+    3) Message - A message assoicated with the status.
+    Parameters
+    ----------
+    data : json
+        Updated data of the user.
+    Returns
+    ----------
+    json
+        Returns a json containing the status, data(No data associated with this function, hence the data is empty), message in accordance with the status.
+    &#34;&#34;&#34;
+
+    if request.method == &#39;PUT&#39;:
+        data = json.loads(request.data)
+
+        status, msg = updateUserProfile(data)
+
+        if status:
+            return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: msg})
+        else:
+            return jsonify({&#34;status&#34;: 400, &#34;data&#34;: {}, &#34;message&#34;: msg})
+
+    return jsonify({&#34;status&#34;: 200, &#34;data&#34;: {}, &#34;message&#34;: &#34;&#34;})</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="backend" href="index.html">backend</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="backend.app.app_addAffiliation" href="#backend.app.app_addAffiliation">app_addAffiliation</a></code></li>
+<li><code><a title="backend.app.app_addAppointment" href="#backend.app.app_addAppointment">app_addAppointment</a></code></li>
+<li><code><a title="backend.app.app_addDoctor" href="#backend.app.app_addDoctor">app_addDoctor</a></code></li>
+<li><code><a title="backend.app.app_addHospital" href="#backend.app.app_addHospital">app_addHospital</a></code></li>
+<li><code><a title="backend.app.app_getAfiiliationByDoctor" href="#backend.app.app_getAfiiliationByDoctor">app_getAfiiliationByDoctor</a></code></li>
+<li><code><a title="backend.app.app_getAfiiliationByHospital" href="#backend.app.app_getAfiiliationByHospital">app_getAfiiliationByHospital</a></code></li>
+<li><code><a title="backend.app.app_getDoctorInfo" href="#backend.app.app_getDoctorInfo">app_getDoctorInfo</a></code></li>
+<li><code><a title="backend.app.app_getDoctorSearch" href="#backend.app.app_getDoctorSearch">app_getDoctorSearch</a></code></li>
+<li><code><a title="backend.app.app_getDoctors" href="#backend.app.app_getDoctors">app_getDoctors</a></code></li>
+<li><code><a title="backend.app.app_getHospitalInfo" href="#backend.app.app_getHospitalInfo">app_getHospitalInfo</a></code></li>
+<li><code><a title="backend.app.app_getHospitalSearch" href="#backend.app.app_getHospitalSearch">app_getHospitalSearch</a></code></li>
+<li><code><a title="backend.app.app_getHospitals" href="#backend.app.app_getHospitals">app_getHospitals</a></code></li>
+<li><code><a title="backend.app.app_updateAffiliation" href="#backend.app.app_updateAffiliation">app_updateAffiliation</a></code></li>
+<li><code><a title="backend.app.app_updateAppointment" href="#backend.app.app_updateAppointment">app_updateAppointment</a></code></li>
+<li><code><a title="backend.app.app_updateDoctor" href="#backend.app.app_updateDoctor">app_updateDoctor</a></code></li>
+<li><code><a title="backend.app.app_updateHospital" href="#backend.app.app_updateHospital">app_updateHospital</a></code></li>
+<li><code><a title="backend.app.approveDoctors" href="#backend.app.approveDoctors">approveDoctors</a></code></li>
+<li><code><a title="backend.app.approveHospitals" href="#backend.app.approveHospitals">approveHospitals</a></code></li>
+<li><code><a title="backend.app.empty" href="#backend.app.empty">empty</a></code></li>
+<li><code><a title="backend.app.getAppointmentInfoDoctor" href="#backend.app.getAppointmentInfoDoctor">getAppointmentInfoDoctor</a></code></li>
+<li><code><a title="backend.app.getAppointmentInfoUser" href="#backend.app.getAppointmentInfoUser">getAppointmentInfoUser</a></code></li>
+<li><code><a title="backend.app.getProfile" href="#backend.app.getProfile">getProfile</a></code></li>
+<li><code><a title="backend.app.login" href="#backend.app.login">login</a></code></li>
+<li><code><a title="backend.app.register" href="#backend.app.register">register</a></code></li>
+<li><code><a title="backend.app.updateprofile" href="#backend.app.updateprofile">updateprofile</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
