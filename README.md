@@ -81,27 +81,11 @@
 <a href="#directory"> Directory Structure </a>
 </li>
 <li> 
-<a href="#releases"> Releases </a>
-</li>
-<li> 
-<a href="#roadmap"> Roadmap </a>
-</li>
-<li> 
-<a href="#chat"> Chat Channel </a>
-</li>
-<li> 
 <a href="#support"> Support </a>
 </li>
 <li> 
 <a href="#licenses"> License </a> 
 </li>
-<li> 
-<a href="#cb"> Contributors </a>
-</li>
-<li> 
-<a href="#credits"> Credits </a>
-</li>
-
 <h2 id = "overview"> About WolfCare </h2>
 
 WolfCare is an online application that manages the health portfolio of the patient and provides doctor’s assistance through an online portal. A virtual doctor appointment booking system overrides the problems of booking an appointment manually. It is convenient, helps in better resource management and aids in syncing of calender schedules. This project provides a platform for the users to create an account, search for doctors at a given location, view the doctor's background and book appointments. Additionally, we have included a symptoms check where users can add theor test report values and view the results of a medical condition.  
@@ -275,42 +259,16 @@ WolfCare targets uses who would like to check the presence of any medical condit
     ├── requirements.txt                    # Details of dependency packages
     └── setup.py                            # Setup file for the module
 
-<h2 id = "releases"> Releases </h2>
-
-* [WolfCare v1.0.0](https://github.com/divyagiridhar/SE-Group-25-WolfCare/releases/tag/v1.0.0): Initial v0.1 release
-* [WolfCare v1.0.1](https://github.com/divyagiridhar/SE-Group-25-WolfCare/releases/tag/v1.0.1): First major release
-* [EnhancedWolfCare v0.1.0](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/releases/tag/0.1.0): Initial v0.1 release
-* [EnhancedWolfCare v1.0.0](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/releases/tag/v1.0.0): First major release
-
-<h2 id = "roadmap"> Roadmap </h2>
-
-* Roadmap for this project can be found [here](https://github.com/users/agupta15k/projects/1).
-
-<h2 id = "chat"> Chat Channel </h2>
-
-* All the communication was handled through a private chat channel and online meets. Some screenshots of discussions can be found [here](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/tree/main/docs/chatChannel/screenshots).
 
 <h2 id = "support"> Support </h2>
 
 We do our best to answer all tickets in a timely manner, but sometimes we accumulate a backlog and may take awhile to respond. Please be patient—we will get back to you as soon as we can! 
 
 Please do contact any of us:
-* Akash Gupta(agupta57@ncsu.edu)
-* Arun Srinivasan P(apartha4@ncsu.edu)
-* Nagaraj Madamshetti(nmadams@ncsu.edu)
+* Shubham Jain(sajain4@wisc.edu)
 * Nitesh Mishra(nmishra4@ncsu.edu)
-* Sumit Singh(ssingh57@ncsu.edu)
 
 <h2 id = "licenses"> Licence </h2>
 
-* We are using [MIT license](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/blob/main/LICENSE)
+* We are using [MIT license](https://github.com/Shubham1309Jain/WolfCare/blob/main/LICENSE)
 * Copyright (c) 2022 Group 22
-
-<h2 id = "cb"> Contributors </h2>
-
-Thanks goes to [these](https://github.com/agupta15k/ncsu_se_fall22_22_pr_2/graphs/contributors) wonderful people.
-
-<h2 id = "credits"> Credits </h2>
-
-* Thanks goes to the owners of repository [SE-Group-25-WolfCare](https://github.com/divyagiridhar/SE-Group-25-WolfCare) for prompting the idea and laying the groundwork.
-* Thanks also goes to [Mr. Jugu Dannie Sundar](https://github.com/jugu), whose rule builder has helped us significantly in this project.
