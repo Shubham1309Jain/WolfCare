@@ -12,9 +12,6 @@
 <a href="#overview"> About WolfCare </a> 
 </li>
 <li> 
-<a href="#demo"> Demo Video </a> 
-</li>
-<li> 
 <a href="#appInAction"> App In Action </a> 
 </li>
 <li> 
@@ -39,9 +36,6 @@
 
 WolfCare is an online application that manages the health portfolio of the patient and provides doctor’s assistance through an online portal. A virtual doctor appointment booking system overrides the problems of booking an appointment manually. It is convenient, helps in better resource management and aids in syncing of calender schedules. This project provides a platform for the users to create an account, search for doctors at a given location, view the doctor's background and book appointments. Additionally, we have included a symptoms check where users can add theor test report values and view the results of a medical condition.  
 
-<h2 id = "demo"> Demo Video </h2>
-
-https://user-images.githubusercontent.com/112216701/205819674-413de60f-b322-4470-8fea-ac8eece08db7.mp4
 
 <h2 id = "appInAction"> App in Action </h2>
 
